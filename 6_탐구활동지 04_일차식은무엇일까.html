@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>일차식은 무엇일까 · 탐구 활동지</title><style>
+/* 색상은 모두 WCAG AA(4.5:1) 이상으로 검증된 조합만 사용합니다.
+   기기가 다크 모드여도 항상 밝은 배경 + 진한 글씨로 고정됩니다. */
+*{box-sizing:border-box}
+:root{
+color-scheme:light;
+--pri:#7C3AED;--prid:#4C1D95;--pril:#EDE9FE;--acc:#BE185D;--accl:#FCE7F3;--bg:#F8F6FF;
+--ink:#1F2937;--ink2:#3F4756;--ink3:#57606F;--line:#DCE2EC;--card:#FFFFFF;
+--ok:#0B7A43;--okbg:#E9F8EF;--no:#B3261E;--nobg:#FDECEA;--warn:#8A4B08;--warnbg:#FFF7E6;
+--fs:16px;--radius:16px;--shadow:0 2px 14px rgba(15,23,42,.09)}
+html{font-size:var(--fs);background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);
+font-family:"Pretendard",-apple-system,"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+line-height:1.65;-webkit-text-size-adjust:100%;overflow-wrap:anywhere}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inset-bottom,0px))}
+header.top{background:linear-gradient(135deg,var(--pri),var(--prid));color:#fff;
+padding:calc(22px + env(safe-area-inset-top,0px)) 0 26px}
+header.top .wrap{padding-bottom:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.chip{background:rgba(0,0,0,.22);border-radius:999px;padding:4px 12px;font-size:.8rem;font-weight:700;color:#fff}
+h1{font-size:clamp(1.35rem,4.6vw,1.9rem);margin:.08em 0 .22em;line-height:1.3;color:#fff}
+.sub{font-size:.9rem;color:#fff}
+.tools{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+.tools button{background:rgba(0,0,0,.24);color:#fff;border:1px solid rgba(255,255,255,.45)}
+.tools button:hover{background:rgba(0,0,0,.36)}
+button{font:inherit;font-weight:700;font-size:.85rem;cursor:pointer;border:0;border-radius:10px;
+padding:9px 13px;color:var(--ink);background:#EEF1F7;transition:.15s}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.btn{background:var(--pri);color:#fff}
+.btn:hover{filter:brightness(1.09)}
+.btn2{background:var(--pril);color:var(--prid)}
+.btn2:hover{filter:brightness(.96)}
+.bar{position:sticky;top:0;z-index:30;background:var(--bg);padding:10px 0 9px;
+box-shadow:0 6px 12px -10px rgba(0,0,0,.35)}
+.track{height:9px;border-radius:999px;background:var(--pril);overflow:hidden}
+.fill{height:100%;width:0;background:var(--pri);transition:width .35s}
+.meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+font-size:.8rem;font-weight:700;color:var(--ink2);margin-top:6px}
+.bigq{background:var(--card);border-radius:14px;padding:15px 17px;margin:18px 0;
+border-left:6px solid var(--acc);box-shadow:var(--shadow)}
+.bigq b{display:block;font-size:.78rem;color:var(--acc);margin-bottom:3px}
+.bigq p{margin:0;font-size:1.05rem;font-weight:700;color:var(--prid)}
+section.act{background:var(--card);border-radius:var(--radius);margin:0 0 18px;
+box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--line)}
+.acthead{background:var(--pri);padding:12px 17px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.acthead *{color:#fff}
+.acthead .n{width:27px;height:27px;border-radius:50%;background:#fff;color:var(--prid);
+display:grid;place-items:center;font-weight:800;flex:0 0 auto;font-size:.88rem}
+.acthead h2{font-size:1rem;margin:0;flex:1 1 170px}
+.acthead .min{background:rgba(0,0,0,.26);border-radius:999px;padding:2px 10px;font-size:.78rem;font-weight:700}
+.acthead .goal{font-size:.78rem;width:100%;padding-left:37px}
+.q{padding:14px 17px;border-bottom:1px solid var(--line);background:var(--card)}
+.q:last-child{border-bottom:0}
+.q.solved{background:#F3FBF6}
+.q.hide{display:none}
+.qt{display:flex;gap:9px;align-items:flex-start;margin-bottom:9px}
+.qt .i{color:var(--prid);font-weight:800;flex:0 0 auto;min-width:1.4em}
+.qt .s{flex:1;color:var(--ink)}
+.row{display:flex;gap:7px;flex-wrap:wrap;align-items:center;padding-left:26px}
+input[type=text]{flex:1 1 190px;min-width:140px;padding:10px 12px;border:2px solid #B9C2D0;
+border-radius:10px;font:inherit;font-size:1rem;background:#fff;color:var(--ink)}
+input[type=text]::placeholder{color:var(--ink3);opacity:1}
+input[type=text]:focus{outline:0;border-color:var(--pri);box-shadow:0 0 0 3px var(--pril)}
+input.ok{border-color:var(--ok);background:var(--okbg);color:var(--ink)}
+input.no{border-color:var(--no);background:var(--nobg);color:var(--ink)}
+textarea{width:100%;min-height:88px;padding:11px 12px;border:2px solid #B9C2D0;border-radius:10px;
+font:inherit;font-size:.95rem;line-height:1.6;resize:vertical;background:#fff;color:var(--ink)}
+textarea::placeholder{color:var(--ink3);opacity:1}
+textarea:focus{outline:0;border-color:var(--pri);box-shadow:0 0 0 3px var(--pril)}
+.pal{display:flex;gap:4px;flex-wrap:wrap;padding-left:26px;margin-top:7px}
+.pal button{background:var(--pril);color:var(--prid);padding:5px 10px;font-size:.95rem;border-radius:8px;font-weight:700}
+.opts{display:flex;gap:7px;flex-wrap:wrap;padding-left:26px}
+.opt{background:#fff;border:2px solid #B9C2D0;border-radius:10px;padding:9px 15px;
+font-size:.95rem;color:var(--ink);font-weight:600}
+.opt:hover{border-color:var(--pri)}
+.opt.sel{border-color:var(--pri);background:var(--pril);color:var(--prid)}
+.opt.ok{border-color:var(--ok);background:var(--okbg);color:var(--ok)}
+.opt.no{border-color:var(--no);background:var(--nobg);color:var(--no)}
+.fb{margin:9px 0 0 26px;font-size:.87rem;font-weight:700;border-radius:9px;padding:9px 12px;display:none;
+border:1px solid transparent}
+.fb.ok{display:block;background:var(--okbg);color:var(--ok);border-color:#BCE6CF}
+.fb.no{display:block;background:var(--nobg);color:var(--no);border-color:#F5C6C2}
+.fb.tip{display:block;background:var(--warnbg);color:var(--warn);border-color:#F3DFB4}
+.help{margin:8px 0 0 26px;font-size:.87rem;background:var(--accl);color:var(--ink);
+border-radius:9px;padding:10px 12px;display:none;border-left:4px solid var(--acc)}
+.help.on{display:block}
+.help b{color:var(--prid)}
+.mini{background:#F2F4F9;color:var(--ink2);padding:8px 11px;font-size:.8rem;font-weight:700}
+.mini[disabled]{color:#5F6B7E;background:#E8EBF2;cursor:not-allowed}
+.warm{background:var(--card);border-radius:var(--radius);margin-bottom:18px;
+box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--line)}
+.warm h3{margin:0;font-size:.95rem;background:var(--pril);color:var(--prid);padding:11px 17px}
+.wrapup{background:var(--accl);border:1px solid #EBD9A8;border-radius:14px;padding:15px 17px;margin:0 0 18px;color:var(--ink)}
+.wrapup b{display:block;font-size:.82rem;color:var(--warn);margin-bottom:5px}
+.sc-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+padding:4px 17px 16px;box-shadow:var(--shadow);margin-bottom:18px}
+.sc-box h3,.rep h3{font-size:1.05rem;color:var(--prid)}
+.sc{display:flex;gap:10px;align-items:center;justify-content:space-between;
+padding:10px 0;border-bottom:1px solid var(--line);flex-wrap:wrap;color:var(--ink)}
+.sc:last-child{border-bottom:0}
+.lv{display:flex;gap:5px}
+.lv button{padding:6px 12px;font-size:.8rem;background:#EEF1F7;color:var(--ink2)}
+.lv button.on{background:var(--pri);color:#fff}
+.rep{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+padding:17px;box-shadow:var(--shadow);margin-bottom:18px;display:none;color:var(--ink)}
+.rep.on{display:block}
+.score{font-size:2rem;font-weight:800;color:var(--prid);line-height:1.2}
+.pct{display:flex;align-items:center;gap:8px;margin:4px 0 12px}
+.gauge{flex:1;height:11px;border-radius:999px;background:#E3E8F1;overflow:hidden}
+.gauge i{display:block;height:100%;background:var(--ok)}
+.tag{display:inline-block;background:var(--pril);color:var(--prid);border-radius:999px;
+padding:3px 10px;font-size:.78rem;font-weight:700;margin:0 6px 5px 0}
+.rep h4{color:var(--prid);font-size:.95rem}
+.wrongs{margin:10px 0 0;padding:0;list-style:none}
+.wrongs li{border-left:4px solid var(--no);background:var(--nobg);border-radius:8px;
+padding:10px 12px;margin-bottom:7px;font-size:.88rem;color:var(--ink)}
+.wrongs b{color:var(--no)}
+.nextup{background:var(--accl);border:1px solid #EBD9A8;border-radius:10px;
+padding:12px 13px;margin-top:11px;font-size:.88rem;color:var(--ink)}
+.nextup b{display:block;color:var(--warn);margin-bottom:4px}
+.drawer{position:fixed;inset:0 0 0 auto;width:min(430px,92vw);background:#fff;color:var(--ink);
+box-shadow:-8px 0 30px rgba(0,0,0,.3);transform:translateX(102%);transition:transform .28s;
+z-index:60;overflow-y:auto;padding:calc(16px + env(safe-area-inset-top,0px)) 18px calc(28px + env(safe-area-inset-bottom,0px))}
+.drawer.on{transform:translateX(0)}
+.drawer h3{margin:4px 0 2px;font-size:1.08rem;color:var(--prid)}
+.drawer h4{margin:16px 0 4px;font-size:.95rem;color:var(--prid);border-left:4px solid var(--pri);padding-left:8px}
+.drawer p{margin:3px 0;font-size:.9rem;color:var(--ink)}
+.drawer p b{color:var(--prid)}
+.drawer .lead{font-size:.86rem;color:var(--ink2);margin-bottom:6px}
+.drawer .tipbox{background:var(--accl);border:1px solid #EBD9A8;border-radius:10px;
+padding:11px 13px;margin-top:14px;font-size:.88rem;color:var(--ink)}
+.drawer .close{position:sticky;top:0;float:right;background:var(--prid);color:#fff}
+.scrim{position:fixed;inset:0;background:rgba(15,23,42,.5);z-index:55;display:none}
+.scrim.on{display:block}
+.fabs{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;gap:8px}
+.fabs button{box-shadow:0 4px 14px rgba(0,0,0,.25)}
+footer{color:var(--ink2);font-size:.8rem;text-align:center;padding:22px 16px 8px}
+.note{font-size:.8rem;color:var(--ink2);padding-left:26px;margin-top:6px}
+@media print{
+ :root{--fs:11.5px}
+ body{background:#fff;color:#000}
+ .bar,.tools,.fabs,.drawer,.scrim,.pal,.mini,button{display:none!important}
+ header.top{background:#fff;padding:0 0 10px;border-bottom:3px solid #000}
+ header.top *{color:#000!important}
+ .chip{background:#eee;color:#000;border:1px solid #999}
+ section.act,.warm,.sc-box,.rep{box-shadow:none;border:1px solid #999;break-inside:avoid;margin-bottom:10px}
+ .acthead{background:#e8e8e8!important}
+ .acthead *{color:#000!important}
+ .acthead .n{background:#000;color:#fff!important}
+ .q{break-inside:avoid;background:#fff}
+ .q.solved{background:#fff}
+ input[type=text]{border:1px solid #666;min-height:30px;background:#fff}
+ textarea{border:1px solid #666;min-height:64px;background:#fff}
+ .fb,.help{display:none!important}
+}
+</style></head><body><header class="top"><div class="wrap"><div class="chips"><span class="chip">Ⅱ. 문자와 식</span><span class="chip">일차식과 그 계산</span><span class="chip">탐구 활동지</span></div><h1>식 해부실 — 이름을 붙여 주세요</h1><div class="sub">Ⅱ. 문자와 식 · 02. 일차식과 그 계산 · 중학교 1학년 수학</div><div class="tools"><button onclick="drawer(true)">📘 개념 도움말</button><button onclick="bumpFS(1)">글자 크게 A+</button><button onclick="bumpFS(-1)">글자 작게 A−</button><button onclick="window.print()">🖨 인쇄 / PDF</button><button onclick="resetAll()">↺ 다시 풀기</button></div></div></header><div class="wrap"><div class="bigq"><b>오늘의 배움 질문</b><p>식을 조각내어 이름을 붙이면 무엇이 편해질까?</p></div><div class="bar"><div class="track"><div class="fill" id="fill"></div></div><div class="meta"><span id="prog">0 / 0 해결</span><span id="clock">⏱ 0:00</span><span id="tip">답을 쓰고 <b>확인</b>을 누르면 바로 채점돼요</span></div></div><div class="warm"><h3>준비 운동 · 3분 &nbsp;|&nbsp; 오늘 배울 내용의 디딤돌이에요</h3><div class="q" id="q0" data-q="0"><div class="qt"><span class="i">(1)</span><span class="s">2 × x 를 기호를 생략하여 나타내시오.</span></div><div class="row"><input type="text" id="in0" autocomplete="off" inputmode="text" aria-label="2 × x 를 기호를 생략하여 나타내시오." onkeydown="if(event.key==='Enter'){event.preventDefault();chk(0);}" placeholder="답 입력 후 Enter"><button class="btn" onclick="chk(0)">확인</button><button class="mini" onclick="hint(0)">힌트</button><button class="mini" id="sv0" onclick="reveal(0)" disabled>정답 보기</button></div><div class="pal" aria-label="수식 입력 도우미"><button type="button" onclick="ins('×')" tabindex="-1">×</button><button type="button" onclick="ins('÷')" tabindex="-1">÷</button><button type="button" onclick="ins('−')" tabindex="-1">−</button><button type="button" onclick="ins('²')" tabindex="-1">²</button><button type="button" onclick="ins('³')" tabindex="-1">³</button><button type="button" onclick="ins('/')" tabindex="-1">/</button><button type="button" onclick="ins('(')" tabindex="-1">(</button><button type="button" onclick="ins(')')" tabindex="-1">)</button><button type="button" onclick="ins('≠')" tabindex="-1">≠</button><button type="button" onclick="ins('½')" tabindex="-1">½</button><button type="button" onclick="ins('x')" tabindex="-1">x</button><button type="button" onclick="ins('a')" tabindex="-1">a</button></div><div class="help" id="h0"></div><div class="fb" id="f0" role="status" aria-live="polite"></div></div><div class="q" id="q1" data-q="1"><div class="qt"><span class="i">(2)</span><span class="s">x = 3 일 때 4x 의 값을 구하시오.</span></div><div class="row"><input type="text" id="in1" autocomplete="off" inputmode="text" aria-label="x = 3 일 때 4x 의 값을 구하시오." onkeydown="if(event.key==='Enter'){event.preventDefault();chk(1);}" placeholder="답 입력 후 Enter"><button class="btn" onclick="chk(1)">확인</button><button class="mini" onclick="hint(1)">힌트</button><button class="mini" id="sv1" onclick="reveal(1)" disabled>정답 보기</button></div><div class="pal" aria-label="수식 입력 도우미"><button type="button" onclick="ins('×')" tabindex="-1">×</button><button type="button" onclick="ins('÷')" tabindex="-1">÷</button><button type="button" onclick="ins('−')" tabindex="-1">−</button><button type="button" onclick="ins('²')" tabindex="-1">²</button><button type="button" onclick="ins('³')" tabindex="-1">³</button><button type="button" onclick="ins('/')" tabindex="-1">/</button><button type="button" onclick="ins('(')" tabindex="-1">(</button><button type="button" onclick="ins(')')" tabindex="-1">)</button><button type="button" onclick="ins('≠')" tabindex="-1">≠</button><button type="button" onclick="ins('½')" tabindex="-1">½</button><button type="button" onclick="ins('x')" tabindex="-1">x</button><button type="button" onclick="ins('a')" tabindex="-1">a</button></div><div class="help" id="h1"></div><div class="fb" id="f1" role="status" aria-live="polite"></div></div><div class="q" id="q2" data-q="2"><div class="qt"><span class="i">(3)</span><span class="s">x × x 를 거듭제곱으로 나타내시오.</span></div><div class="row"><input type="text" id="in2" autocomplete="off" inputmode="text" aria-label="x × x 를 거듭제곱으로 나타내시오." onkeydown="if(event.key==='Enter'){event.preventDefault();chk(2);}" placeholder="답 입력 후 Enter"><button class="btn" onclick="chk(2)">확인</button><button class="mini" onclick="hint(2)">힌트</button><button class="mini" id="sv2" onclick="reveal(2)" disabled>정답 보기</button></div><div class="pal" aria-label="수식 입력 도우미"><button type="button" onclick="ins('×')" tabindex="-1">×</button><button type="button" onclick="ins('÷')" tabindex="-1">÷</button><button type="button" onclick="ins('−')" tabindex="-1">−</button><button type="button" onclick="ins('²')" tabindex="-1">²</button><button type="button" onclick="ins('³')" tabindex="-1">³</button><button type="button" onclick="ins('/')" tabindex="-1">/</button><button type="button" onclick="ins('(')" tabindex="-1">(</button><button type="button" onclick="ins(')')" tabindex="-1">)</button><button type="button" onclick="ins('≠')" tabindex="-1">≠</button><button type="button" onclick="ins('½')" tabindex="-1">½</button><button type="button" onclick="ins('x')" tabindex="-1">x</button><button type="button" onclick="ins('a')" tabindex="-1">a</button></div><div class="help" id="h2"></div><div class="fb" id="f2" role="status" aria-live="polite"></div></div></div><section class="act" id="act1"><div class="acthead"><span class="n">1</span><h2>식을 조각내기</h2><span class="min">권장 10분</span><div class="goal">목표 · 항·상수항·계수를 정확히 찾는다</div></div><div class="q" id="q3" data-q="3"><div class="qt"><span class="i">1.</span><span class="s">4x + 7 의 항을 모두 쓰시오. (쉼표로 구분)</span></div><div class="row"><input type="text" id="in3" autocomplete="off" inputmode="text" aria-label="4x + 7 의 항을 모두 쓰시오. (쉼표로 구분)" onkeydown="if(event.key==='Enter'){event.preventDefault();chk(3);}" placeholder="답 입력 후 Enter"><button class="btn" onclick="chk(3)">확인</button><button class="mini" onclick="hint(3)">힌트</button><button class="mini" id="sv3" onclick="reveal(3)" disabled>정답 보기</button></div><div class="pal" aria-label="수식 입력 도우미"><button type="button" onclick="ins('×')" tabindex="-1">×</button><button type="button" onclick="ins('÷')" tabindex="-1">÷</button><button type="button" onclick="ins('−')" tabindex="-1">−</button><button type="button" onclick="ins('²')" tabindex="-1">²</button><button type="button" onclick="ins('³')" tabindex="-1">³</button><button type="button" onclick="ins('/')" tabindex="-1">/</button><button type="button" onclick="ins('(')" tabindex="-1">(</button><button type="button" onclick="ins(')')" tabindex="-1">)</button><button type="button" onclick="ins('≠')" tabindex="-1">≠</button><button type="button" onclick="ins('½')" tabindex="-1">½</button><button type="button" onclick="ins('x')" tabindex="-1">x</button><button type="button" onclick="ins('a')" tabindex="-1">a</button></div><div class="help" id="h3"></div><div class="fb" id="f3" role="status" aria-live="polite"></div></div><div class="q" id="q4" data-q="4"><div class="qt"><span class="i">2.</span><span class="s">4x + 7 의 상수항을 쓰시오.</span></div><div class="row"><input type="text" id="in4" autocomplete="off" inputmode="text" aria-label="4x + 7 의 상수항을 쓰시오." onkeydown="if(event.key==='Enter'){event.preventDefault();chk(4);}" placeholder="답 입력 후 Enter"><button class="btn" onclick="chk(4)">확인</button><button class="mini" onclick="hint(4)">힌트</button><button class="mini" id="sv4" onclick="reveal(4)" disabled>정답 보기</button></div><div class="pal" aria-label="수식 입력 도우미"><button type="button" onclick="ins('×')" tabindex="-1">×</button><button type="button" onclick="ins('÷')" tabindex="-1">÷</button><button type="button" onclick="ins('−')" tabindex="-1">−</button><button type="button" onclick="ins('²')" tabindex="-1">²</button><button type="button" onclick="ins('³')" tabindex="-1">³</button><button type="button" onclick="ins('/')" tabindex="-1">/</button><button type="button" onclick="ins('(')" tabindex="-1">(</button><button type="button" onclick="ins(')')" tabindex="-1">)</button><button type="button" onclick="ins('≠')" tabindex="-1">≠</button><button type="button" onclick="ins('½')" tabindex="-1">½</button><button type="button" onclick="ins('x')" tabindex="-1">x</button><button type="button" onclick="ins('a')" tabindex="-1">a</button></div><div class="help" id="h4"></div><div class="fb" id="f4" role="status" aria-live="polite"></div></div><div class="q" id="q5" data-q="5"><div class="qt"><span class="i">3.</span><span class="s">4x + 7 에서 x의 계수를 쓰시오.</span></div><div class="row"><input type="text" id="in5" autocomplete="off" inputmode="text" aria-label="4x + 7 에서 x의 계수를 쓰시오." onkeydown="if(event.key==='Enter'){event.preventDefault();chk(5);}" placeholder="답 입력 후 Enter"><button class="btn" onclick="chk(5)">확인</button><button class="mini" onclick="hint(5)">힌트</button><button class="mini" id="sv5" onclick="reveal(5)" disabled>정답 보기</button></div><div class="pal" aria-label="수식 입력 도우미"><button type="button" onclick="ins('×')" tabindex="-1">×</button><button type="button" onclick="ins('÷')" tabindex="-1">÷</button><button type="button" onclick="ins('−')" tabindex="-1">−</button><button type="button" onclick="ins('²')" tabindex="-1">²</button><button type="button" onclick="ins('³')" tabindex="-1">³</button><button type="button" onclick="ins('/')" tabindex="-1">/</button><button type="button" onclick="ins('(')" tabindex="-1">(</button><button type="button" onclick="ins(')')" tabindex="-1">)</button><button type="button" onclick="ins('≠')" tabindex="-1">≠</button><button type="button" onclick="ins('½')" tabindex="-1">½</button><button type="button" onclick="ins('x')" tabindex="-1">x</button><button type="button" onclick="ins('a')" tabindex="-1">a</button></div><div class="help" id="h5"></div><div class="fb" id="f5" role="status" aria-live="polite"></div></div><div class="q" id="q6" data-q="6"><div class="qt"><span class="i">4.</span><span class="s">2x − 5 의 상수항을 쓰시오.</span></div><div class="row"><input type="text" id="in6" autocomplete="off" inputmode="text" aria-label="2x − 5 의 상수항을 쓰시오." onkeydown="if(event.key==='Enter'){event.preventDefault();chk(6);}" placeholder="답 입력 후 Enter"><button class="btn" onclick="chk(6)">확인</button><button class="mini" onclick="hint(6)">힌트</button><button class="mini" id="sv6" onclick="reveal(6)" disabled>정답 보기</button></div><div class="pal" aria-label="수식 입력 도우미"><button type="button" onclick="ins('×')" tabindex="-1">×</button><button type="button" onclick="ins('÷')" tabindex="-1">÷</button><button type="button" onclick="ins('−')" tabindex="-1">−</button><button type="button" onclick="ins('²')" tabindex="-1">²</button><button type="button" onclick="ins('³')" tabindex="-1">³</button><button type="button" onclick="ins('/')" tabindex="-1">/</button><button type="button" onclick="ins('(')" tabindex="-1">(</button><button type="button" onclick="ins(')')" tabindex="-1">)</button><button type="button" onclick="ins('≠')" tabindex="-1">≠</button><button type="button" onclick="ins('½')" tabindex="-1">½</button><button type="button" onclick="ins('x')" tabindex="-1">x</button><button type="button" onclick="ins('a')" tabindex="-1">a</button></div><div class="help" id="h6"></div><div class="fb" id="f6" role="status" aria-live="polite"></div></div><div class="q" id="q7" data-q="7"><div class="qt"><span class="i">5.</span><span class="s">−x + 3 에서 x의 계수를 쓰시오.</span></div><div class="row"><input type="text" id="in7" autocomplete="off" inputmode="text" aria-label="−x + 3 에서 x의 계수를 쓰시오." onkeydown="if(event.key==='Enter'){event.preventDefault();chk(7);}" placeholder="답 입력 후 Enter"><button class="btn" onclick="chk(7)">확인</button><button class="mini" onclick="hint(7)">힌트</button><button class="mini" id="sv7" onclick="reveal(7)" disabled>정답 보기</button></div><div class="pal" aria-label="수식 입력 도우미"><button type="button" onclick="ins('×')" tabindex="-1">×</button><button type="button" onclick="ins('÷')" tabindex="-1">÷</button><button type="button" onclick="ins('−')" tabindex="-1">−</button><button type="button" onclick="ins('²')" tabindex="-1">²</button><button type="button" onclick="ins('³')" tabindex="-1">³</button><button type="button" onclick="ins('/')" tabindex="-1">/</button><button type="button" onclick="ins('(')" tabindex="-1">(</button><button type="button" onclick="ins(')')" tabindex="-1">)</button><button type="button" onclick="ins('≠')" tabindex="-1">≠</button><button type="button" onclick="ins('½')" tabindex="-1">½</button><button type="button" onclick="ins('x')" tabindex="-1">x</button><button type="button" onclick="ins('a')" tabindex="-1">a</button></div><div class="help" id="h7"></div><div class="fb" id="f7" role="status" aria-live="polite"></div></div><div class="q" id="q8" data-q="8"><div class="qt"><span class="i">6.</span><span class="s">x/3 + 1 에서 x의 계수를 쓰시오.</span></div><div class="row"><input type="text" id="in8" autocomplete="off" inputmode="text" aria-label="x/3 + 1 에서 x의 계수를 쓰시오." onkeydown="if(event.key==='Enter'){event.preventDefault();chk(8);}" placeholder="답 입력 후 Enter"><button class="btn" onclick="chk(8)">확인</button><button class="mini" onclick="hint(8)">힌트</button><button class="mini" id="sv8" onclick="reveal(8)" disabled>정답 보기</button></div><div class="pal" aria-label="수식 입력 도우미"><button type="button" onclick="ins('×')" tabindex="-1">×</button><button type="button" onclick="ins('÷')" tabindex="-1">÷</button><button type="button" onclick="ins('−')" tabindex="-1">−</button><button type="button" onclick="ins('²')" tabindex="-1">²</button><button type="button" onclick="ins('³')" tabindex="-1">³</button><button type="button" onclick="ins('/')" tabindex="-1">/</button><button type="button" onclick="ins('(')" tabindex="-1">(</button><button type="button" onclick="ins(')')" tabindex="-1">)</button><button type="button" onclick="ins('≠')" tabindex="-1">≠</button><button type="button" onclick="ins('½')" tabindex="-1">½</button><button type="button" onclick="ins('x')" tabindex="-1">x</button><button type="button" onclick="ins('a')" tabindex="-1">a</button></div><div class="help" id="h8"></div><div class="fb" id="f8" role="status" aria-live="polite"></div></div></section><section class="act" id="act2"><div class="acthead"><span class="n">2</span><h2>일차식 판정 관문</h2><span class="min">권장 10분</span><div class="goal">목표 · 일차식의 조건을 스스로 적용한다</div></div><div class="q" id="q9" data-q="9"><div class="qt"><span class="i">1.</span><span class="s">2x + 1 은 일차식이다.</span></div><div class="opts" id="o9" role="group"><button class="opt" onclick="pick(9,0)">O</button><button class="opt" onclick="pick(9,1)">X</button></div><div class="row"><button class="mini" onclick="hint(9)">힌트</button></div><div class="help" id="h9"></div><div class="fb" id="f9" role="status" aria-live="polite"></div></div><div class="q" id="q10" data-q="10"><div class="qt"><span class="i">2.</span><span class="s">x² + 3 은 일차식이다.</span></div><div class="opts" id="o10" role="group"><button class="opt" onclick="pick(10,0)">O</button><button class="opt" onclick="pick(10,1)">X</button></div><div class="row"><button class="mini" onclick="hint(10)">힌트</button></div><div class="help" id="h10"></div><div class="fb" id="f10" role="status" aria-live="polite"></div></div><div class="q" id="q11" data-q="11"><div class="qt"><span class="i">3.</span><span class="s">−5x 는 일차식이다.</span></div><div class="opts" id="o11" role="group"><button class="opt" onclick="pick(11,0)">O</button><button class="opt" onclick="pick(11,1)">X</button></div><div class="row"><button class="mini" onclick="hint(11)">힌트</button></div><div class="help" id="h11"></div><div class="fb" id="f11" role="status" aria-live="polite"></div></div><div class="q" id="q12" data-q="12"><div class="qt"><span class="i">4.</span><span class="s">7 은 일차식이다.</span></div><div class="opts" id="o12" role="group"><button class="opt" onclick="pick(12,0)">O</button><button class="opt" onclick="pick(12,1)">X</button></div><div class="row"><button class="mini" onclick="hint(12)">힌트</button></div><div class="help" id="h12"></div><div class="fb" id="f12" role="status" aria-live="polite"></div></div><div class="q" id="q13" data-q="13"><div class="qt"><span class="i">5.</span><span class="s">3/x 는 일차식이다.</span></div><div class="opts" id="o13" role="group"><button class="opt" onclick="pick(13,0)">O</button><button class="opt" onclick="pick(13,1)">X</button></div><div class="row"><button class="mini" onclick="hint(13)">힌트</button></div><div class="help" id="h13"></div><div class="fb" id="f13" role="status" aria-live="polite"></div></div><div class="q" id="q14" data-q="14"><div class="qt"><span class="i">6.</span><span class="s">x/4 − 2 는 일차식이다.</span></div><div class="opts" id="o14" role="group"><button class="opt" onclick="pick(14,0)">O</button><button class="opt" onclick="pick(14,1)">X</button></div><div class="row"><button class="mini" onclick="hint(14)">힌트</button></div><div class="help" id="h14"></div><div class="fb" id="f14" role="status" aria-live="polite"></div></div></section><section class="act" id="act3"><div class="acthead"><span class="n">3</span><h2>용어로 시 쓰기 (모둠 활동)</h2><span class="min">권장 10분</span><div class="goal">목표 · 용어를 자기 말로 바꾸며 개념을 내면화한다</div></div><div class="q" id="q15" data-q="15"><div class="qt"><span class="i">1.</span><span class="s">&#x27;항, 계수, 상수항, 차수, 일차식&#x27; 중 세 개 이상을 넣어 네 줄짜리 짧은 시를 지어 보자.</span></div><div style="padding-left:26px"><textarea id="in15" oninput="prog()" aria-label="&#x27;항, 계수, 상수항, 차수, 일차식&#x27; 중 세 개 이상을 넣어 네 줄짜리 짧은 시를 지어 보자." placeholder="내 생각을 문장으로 써 보세요"></textarea></div><div class="pal" aria-label="수식 입력 도우미"><button type="button" onclick="ins('×')" tabindex="-1">×</button><button type="button" onclick="ins('÷')" tabindex="-1">÷</button><button type="button" onclick="ins('−')" tabindex="-1">−</button><button type="button" onclick="ins('²')" tabindex="-1">²</button><button type="button" onclick="ins('³')" tabindex="-1">³</button><button type="button" onclick="ins('/')" tabindex="-1">/</button><button type="button" onclick="ins('(')" tabindex="-1">(</button><button type="button" onclick="ins(')')" tabindex="-1">)</button><button type="button" onclick="ins('≠')" tabindex="-1">≠</button><button type="button" onclick="ins('½')" tabindex="-1">½</button><button type="button" onclick="ins('x')" tabindex="-1">x</button><button type="button" onclick="ins('a')" tabindex="-1">a</button></div><div class="row"><button class="mini" onclick="hint(15)">예시 답안 보기</button></div><div class="help" id="h15"></div><p class="note">※ 스스로 채점하는 문항입니다. 예시와 비교해 보완해 보세요.</p></div><div class="q" id="q16" data-q="16"><div class="qt"><span class="i">2.</span><span class="s">우리 모둠 시에서 가장 마음에 드는 구절과 그 까닭을 적어 보자.</span></div><div style="padding-left:26px"><textarea id="in16" oninput="prog()" aria-label="우리 모둠 시에서 가장 마음에 드는 구절과 그 까닭을 적어 보자." placeholder="내 생각을 문장으로 써 보세요"></textarea></div><div class="pal" aria-label="수식 입력 도우미"><button type="button" onclick="ins('×')" tabindex="-1">×</button><button type="button" onclick="ins('÷')" tabindex="-1">÷</button><button type="button" onclick="ins('−')" tabindex="-1">−</button><button type="button" onclick="ins('²')" tabindex="-1">²</button><button type="button" onclick="ins('³')" tabindex="-1">³</button><button type="button" onclick="ins('/')" tabindex="-1">/</button><button type="button" onclick="ins('(')" tabindex="-1">(</button><button type="button" onclick="ins(')')" tabindex="-1">)</button><button type="button" onclick="ins('≠')" tabindex="-1">≠</button><button type="button" onclick="ins('½')" tabindex="-1">½</button><button type="button" onclick="ins('x')" tabindex="-1">x</button><button type="button" onclick="ins('a')" tabindex="-1">a</button></div><p class="note">※ 스스로 채점하는 문항입니다. 예시와 비교해 보완해 보세요.</p></div></section><div class="wrapup"><b>배움 정리</b>오늘의 한 줄: 일차식은 (                    ) 가 1인 (          ) 이다.<div style="margin-top:8px"><textarea id="wrapup" oninput="save()" placeholder="오늘 배운 것을 내 말로 한 문장으로 써 보세요"></textarea></div></div><div class="sc-box"><h3>스스로 점검하기</h3><div class="sc"><span>다항식에서 항과 상수항을 찾을 수 있다.</span><span class="lv"><button id="sc0_3" onclick="setsc(0,3)">잘함</button><button id="sc0_2" onclick="setsc(0,2)">보통</button><button id="sc0_1" onclick="setsc(0,1)">노력</button></span></div><div class="sc"><span>문자의 계수를 부호까지 바르게 말할 수 있다.</span><span class="lv"><button id="sc1_3" onclick="setsc(1,3)">잘함</button><button id="sc1_2" onclick="setsc(1,2)">보통</button><button id="sc1_1" onclick="setsc(1,1)">노력</button></span></div><div class="sc"><span>주어진 식이 일차식인지 판정하고 까닭을 말할 수 있다.</span><span class="lv"><button id="sc2_3" onclick="setsc(2,3)">잘함</button><button id="sc2_2" onclick="setsc(2,2)">보통</button><button id="sc2_1" onclick="setsc(2,1)">노력</button></span></div></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 18px"><button class="btn" onclick="report()">📊 학습 리포트 보기</button><button class="btn2" onclick="onlyWrong()" id="owbtn">틀린 문항만 다시 풀기</button><button class="btn2" onclick="copyReport()">📋 결과 복사(제출용)</button></div><div class="rep" id="rep"></div><footer>Ⅱ. 문자와 식 · 중학교 1학년 수학 · 탐구 활동지 &nbsp;|&nbsp; 성취기준 [9수02-03] 일차식의 뜻을 알고 그 계산의 원리를 이해한다.</footer></div><div class="fabs"><button class="btn" onclick="drawer(true)">📘 개념</button><button class="btn2" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button></div><aside class="drawer" id="drawer" aria-hidden="true" aria-label="핵심 개념 도움말"><button class="close" onclick="drawer(false)">닫기 ✕</button><h3>핵심 개념 도움말</h3><p class="lead">일차식은 무엇일까</p><h4>식의 해부도</h4><p class="lead">3x + 5 를 조각내어 이름을 붙여 보자</p><p><b>항</b><br>+ 로 연결된 각 덩어리<br>3x + 5 → 항은  3x,  5</p><p><b>상수항</b><br>수만으로 된 항<br>3x + 5 → 상수항은  5</p><p><b>계수</b><br>문자에 곱해진 수<br>3x 에서 x의 계수는  3<br>−x 에서 x의 계수는  −1</p><p><b>다항식과 단항식</b><br>항의 합으로 된 식 → 다항식<br>항이 하나뿐인 식 → 단항식<br>단항식도 다항식이다!</p><div class="tipbox">💡 뺄셈이 있는 식은 덧셈으로 고쳐서 본다. 2x − 7 = 2x + (−7) 이므로 상수항은 −7 이다.</div><h4>차수와 일차식 판정</h4><p class="lead">문자가 몇 번 곱해졌는지 세어 보자</p><p><b>차수 = 문자가 곱해진 개수</b><br>3x → x가 1번 → 차수 1<br>3x² → x가 2번 → 차수 2<br>5 → 문자가 없다 → 차수 0</p><p><b>다항식의 차수</b><br>항들의 차수 중 가장 큰 것<br>2x² + 3x + 1 → 차수 2</p><p><b>일차식 판정 3관문</b><br>① 다항식인가?<br>② 가장 큰 차수가 1인가?<br>③ 분모에 문자가 없는가?<br>→ 모두 통과하면 일차식</p><p><b>예와 반례</b><br>일차식:  2x + 1,  −x,  x/3 + 5<br>일차식 아님:  x² + 1,  3/x,  7</p><div class="tipbox">💡 상수만 있는 7은 차수가 0이므로 일차식이 아니다. 또 3/x 는 문자가 분모에 있어 다항식이 아니다.</div><h4>핵심 용어</h4><p><b>항</b> · 수 또는 문자의 곱으로 이루어진 식의 한 덩어리</p><p><b>상수항</b> · 수만으로 이루어진 항</p><p><b>계수</b> · 항에서 문자에 곱해진 수</p><p><b>차수</b> · 어떤 항에서 문자가 곱해진 개수</p><p><b>일차식</b> · 차수가 1인 다항식</p></aside><div class="scrim" id="scrim" onclick="drawer(false)"></div><script>
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function norm(s){return (s==null?'':String(s)).trim().toLowerCase()
+  .replace(/[−–—‒－]/g,'-')
+  .replace(/[×]/g,'*').replace(/[÷]/g,'/')
+  .replace(/²/g,'2').replace(/³/g,'3').replace(/\^/g,'')
+  .replace(/\s+/g,'').replace(/[（(]/g,'(').replace(/[）)]/g,')')
+  .replace(/^x=/,'').replace(/[.,]$/,'');}
+function match(v,ansStr){var a=String(ansStr).split('|'),n=norm(v);
+  for(var i=0;i<a.length;i++){if(n===norm(a[i]))return true;}return false;}
+/* 오답 진단 — 무엇을 고쳐야 할지 알려 준다 */
+function diagnose(v,ansStr){
+  var u=norm(v); if(!u) return '답을 입력한 뒤 확인을 눌러 주세요.';
+  var alts=String(ansStr).split('|').map(norm);
+  for(var i=0;i<alts.length;i++){var a=alts[i];
+    if(u.replace(/-/g,'')===a.replace(/-/g,'')&&u!==a) return '거의 맞았어요! 부호(+, −)를 다시 확인해 보세요.';
+    if(u.replace(/[^0-9]/g,'')===a.replace(/[^0-9]/g,'')&&a.replace(/[^a-z]/g,'')!==''&&u.replace(/[^a-z]/g,'')==='')
+      return '수는 맞아요. 문자를 빠뜨리지 않았는지 확인해 보세요.';
+    if(u.split('').sort().join('')===a.split('').sort().join('')) return '쓰인 기호는 같아요. 순서와 표기 약속(수를 문자 앞에)을 확인해 보세요.';
+    if(a.indexOf('/')>=0&&u.indexOf('/')<0) return '나눗셈은 분수 꼴로 나타내 보세요.';
+    if(Math.abs(u.length-a.length)<=1) return '아주 가까워요. 한 글자만 다시 살펴보세요.';
+  }
+  return '다시 한 번 생각해 볼까요? 힌트를 열어 보세요.';
+}
+function fmtTime(sec){var m=Math.floor(sec/60),s=sec%60;return m+':'+(s<10?'0':'')+s;}
+var T0=Date.now(), TIMER=null;
+function startTimer(elId){var e=$(elId); if(!e)return;
+  TIMER=setInterval(function(){e.textContent='⏱ '+fmtTime(Math.floor((Date.now()-T0)/1000));},1000);}
+/* 글자 크기 */
+function setFS(px){try{document.documentElement.style.setProperty('--fs',px+'px');
+  localStorage.setItem('aiep_fs',px);}catch(e){}}
+function bumpFS(d){var cur=parseFloat(localStorage.getItem('aiep_fs')||'16');
+  setFS(Math.max(13,Math.min(22,cur+d)));}
+(function(){try{var f=localStorage.getItem('aiep_fs'); if(f) setFS(parseFloat(f));}catch(e){}})();
+/* 수식 입력 팔레트 */
+var FOCUSED=null;
+document.addEventListener('focusin',function(e){
+  if(e.target&&(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')) FOCUSED=e.target;});
+function ins(ch){var el=FOCUSED; if(!el) return;
+  var s=el.selectionStart||0,e=el.selectionEnd||0,v=el.value;
+  el.value=v.slice(0,s)+ch+v.slice(e); el.focus(); el.selectionStart=el.selectionEnd=s+ch.length;
+  if(el.oninput) el.oninput();}
+/* 서랍(개념 도움말) */
+function drawer(on){var d=$('drawer'),s=$('scrim'); if(!d)return;
+  d.classList.toggle('on',on); s.classList.toggle('on',on);
+  d.setAttribute('aria-hidden', on?'false':'true');}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')drawer(false);});
+/* 클립보드 */
+function copyText(t){
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(t).then(function(){alert('결과를 복사했습니다. 선생님께 붙여넣어 제출하세요.');},
+      function(){fallbackCopy(t);});
+  } else fallbackCopy(t);}
+function fallbackCopy(t){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);
+  a.select();try{document.execCommand('copy');alert('결과를 복사했습니다.');}catch(e){alert('복사에 실패했습니다. 직접 선택해 복사해 주세요.');}
+  document.body.removeChild(a);}
+
+var ITEMS=[{"id": 0, "a": "2x", "d": "2x", "g": 0, "q": "2 × x 를 기호를 생략하여 나타내시오.", "hint": "수는 문자 앞에"}, {"id": 1, "a": "12", "d": "12", "g": 0, "q": "x = 3 일 때 4x 의 값을 구하시오.", "hint": "4×(3)"}, {"id": 2, "a": "x^2|x²", "d": "x²", "g": 0, "q": "x × x 를 거듭제곱으로 나타내시오.", "hint": "같은 문자의 곱"}, {"id": 3, "a": "4x, 7|4x,7|7,4x", "d": "4x,7", "g": 1, "q": "4x + 7 의 항을 모두 쓰시오. (쉼표로 구분)", "hint": "+로 연결된 덩어리"}, {"id": 4, "a": "7", "d": "7", "g": 1, "q": "4x + 7 의 상수항을 쓰시오.", "hint": "수만으로 된 항"}, {"id": 5, "a": "4", "d": "4", "g": 1, "q": "4x + 7 에서 x의 계수를 쓰시오.", "hint": "x에 곱해진 수"}, {"id": 6, "a": "-5|−5", "d": "-5", "g": 1, "q": "2x − 5 의 상수항을 쓰시오.", "hint": "뺄셈은 덧셈으로 고쳐 보세요."}, {"id": 7, "a": "-1|−1", "d": "-1", "g": 1, "q": "−x + 3 에서 x의 계수를 쓰시오.", "hint": "−x = (−1)×x"}, {"id": 8, "a": "1/3", "d": "1/3", "g": 1, "q": "x/3 + 1 에서 x의 계수를 쓰시오.", "hint": "x/3 = (1/3)×x"}, {"id": 9, "a": "0", "opts": ["O", "X"], "g": 2, "q": "2x + 1 은 일차식이다.", "hint": "차수가 1인 다항식"}, {"id": 10, "a": "1", "opts": ["O", "X"], "g": 2, "q": "x² + 3 은 일차식이다.", "hint": "가장 큰 차수가 2"}, {"id": 11, "a": "0", "opts": ["O", "X"], "g": 2, "q": "−5x 는 일차식이다.", "hint": "단항식도 다항식"}, {"id": 12, "a": "1", "opts": ["O", "X"], "g": 2, "q": "7 은 일차식이다.", "hint": "차수가 0"}, {"id": 13, "a": "1", "opts": ["O", "X"], "g": 2, "q": "3/x 는 일차식이다.", "hint": "문자가 분모에 있으면 다항식이 아님"}, {"id": 14, "a": "0", "opts": ["O", "X"], "g": 2, "q": "x/4 − 2 는 일차식이다.", "hint": "계수가 분수여도 차수는 1"}, {"id": 15, "a": null, "g": 3, "q": "'항, 계수, 상수항, 차수, 일차식' 중 세 개 이상을 넣어 네 줄짜리 짧은 시를 지어 보자.", "guide": "예) 나는 항, 홀로 서도 다항식 / 내 앞의 수는 계수 / 문자 없이 남은 나는 상수항 …"}, {"id": 16, "a": null, "g": 3, "q": "우리 모둠 시에서 가장 마음에 드는 구절과 그 까닭을 적어 보자.", "guide": ""}], ACTS=[{"no": 1, "title": "식을 조각내기"}, {"no": 2, "title": "일차식 판정 관문"}, {"no": 3, "title": "용어로 시 쓰기 (모둠 활동)"}], TIERS={"basic": ["3x + 2 의 항, 상수항, x의 계수를 각각 써 보자.", "다음 중 일차식을 골라 보자: 4x, x², 9"], "core": ["−2x + 7, x/4 − 1 의 계수와 상수항을 각각 구해 보자.", "3x² − x + 5 의 차수와 각 항의 차수를 구해 보자."], "adv": ["'모든 단항식은 다항식이지만, 모든 다항식이 단항식은 아니다'를 예를 들어 설명해 보자.", "a가 어떤 수일 때 (a−2)x + 3 이 일차식이 되는지 구하고, 그 까닭을 설명해 보자."]};
+var KEY="ws2_"+"04_일차식", LESSON="일차식은 무엇일까";
+var st={}, tries={}, solved={}, revealed={};
+function find(i){for(var k=0;k<ITEMS.length;k++)if(ITEMS[k].id===i)return ITEMS[k];return null;}
+function hint(i){var it=find(i),h=$('h'+i);if(!h||!it)return;
+  h.innerHTML = it.a===null ? ('✔ 예시 · '+esc(it.guide||'')) : ('💡 힌트 · '+esc(it.hint||'차근차근 한 단계씩 생각해 보세요.'));
+  h.classList.toggle('on');}
+function reveal(i){var it=find(i);if(!it||it.a===null)return;
+  var h=$('h'+i); h.innerHTML='✅ 정답 · <b>'+esc(it.d||String(it.a).split('|')[0])+'</b><br><span style="font-size:.9em">'
+    +esc(it.hint||'')+'</span>'; h.classList.add('on');
+  revealed[i]=true; save();}
+function pick(i,oi){var it=find(i),box=$('o'+i);
+  st[i]=oi; tries[i]=(tries[i]||0)+1;
+  var ok=(String(oi)===String(it.a));
+  for(var k=0;k<box.children.length;k++){
+    box.children[k].className='opt'+(k===oi?(ok?' ok':' no'):'')+((!ok&&k===Number(it.a))?' ok':'');}
+  var f=$('f'+i); f.className='fb '+(ok?'ok':'no');
+  f.textContent= ok?'✅ 정답입니다!':'❌ 다시 생각해 볼까요? 정답을 함께 표시했어요.';
+  solved[i]=ok; if(!ok){var h=$('h'+i); hintOpen(i);} 
+  $('q'+i).classList.toggle('solved',ok); save(); prog();}
+function hintOpen(i){var it=find(i),h=$('h'+i);if(!h||!it)return;
+  h.innerHTML='💡 힌트 · '+esc(it.hint||'개념 도움말을 열어 확인해 보세요.'); h.classList.add('on');}
+function chk(i){var it=find(i),v=($('in'+i)||{}).value||'';
+  st[i]=v; tries[i]=(tries[i]||0)+1;
+  var ok=match(v,it.a), f=$('f'+i), inp=$('in'+i);
+  inp.className=ok?'ok':'no';
+  if(ok){f.className='fb ok'; f.textContent='✅ 정답입니다! ('+tries[i]+'번째 시도)'; solved[i]=true;
+    var h=$('h'+i); if(h) h.classList.remove('on');
+    var all=ITEMS.filter(function(z){return z.a!==null;});
+    var pos=all.findIndex(function(z){return z.id===i;});
+    if(pos>=0&&pos+1<all.length){var nx=$('in'+all[pos+1].id); if(nx&&!solved[all[pos+1].id]) nx.focus();}
+  }else{f.className='fb no'; f.textContent='❌ '+diagnose(v,it.a); solved[i]=false;
+    if(tries[i]>=2) hintOpen(i);
+    if(tries[i]>=3){var b=$('sv'+i); if(b) b.disabled=false;}}
+  $('q'+i).classList.toggle('solved',!!ok); save(); prog();}
+function openCount(){var d=0,t=0;
+  ITEMS.forEach(function(it){ if(it.a===null){t++; var e2=$('in'+it.id);
+    if(e2&&e2.value.trim().length>4) d++;} else {t++; if(solved[it.id]) d++;}});
+  return [d,t];}
+function prog(){var r=openCount();
+  $('prog').textContent=r[0]+' / '+r[1]+' 해결';
+  $('fill').style.width=(r[1]?Math.round(r[0]*100/r[1]):0)+'%'; save(); return r;}
+function setsc(i,lv){for(var k=1;k<=3;k++){var b=$('sc'+i+'_'+k); if(b) b.className=(k===lv?'on':'');}
+  st['sc'+i]=lv; save();}
+function stats(){
+  var auto=ITEMS.filter(function(z){return z.a!==null;});
+  var by={}, wrong=[];
+  auto.forEach(function(it){
+    var g=it.g; by[g]=by[g]||{ok:0,n:0};
+    by[g].n++; if(solved[it.id]) by[g].ok++; else wrong.push(it);});
+  var ok=auto.filter(function(z){return solved[z.id];}).length;
+  return {n:auto.length, ok:ok, pct:auto.length?Math.round(ok*100/auto.length):0, by:by, wrong:wrong};
+}
+function report(){var s=stats(), r=$('rep'); r.classList.add('on');
+  var tier = s.pct>=80?'adv':(s.pct>=60?'core':'basic');
+  var label= s.pct>=80?'심화':(s.pct>=60?'기본':'보충');
+  var msg  = s.pct>=80?'훌륭해요! 심화 과제로 한 걸음 더 나아가 보세요.'
+           :(s.pct>=60?'잘하고 있어요. 틀린 문항을 다시 풀어 확실히 다져 봐요.'
+                      :'괜찮아요. 개념 도움말을 다시 읽고 보충 과제부터 해 봐요.');
+  var h='<h3>학습 리포트</h3><div class="score">'+s.ok+' / '+s.n+'</div>'
+   +'<div class="pct"><div class="gauge"><i style="width:'+s.pct+'%"></i></div><b>'+s.pct+'%</b></div>'
+   +'<p style="margin:0 0 10px">'+msg+'</p>';
+  h+='<div>';
+  ACTS.forEach(function(a){var b=s.by[a.no]; if(!b)return;
+    h+='<span class="tag">'+esc(a.title)+' '+b.ok+'/'+b.n+'</span>';});
+  var w0=s.by[0]; if(w0) h+='<span class="tag">준비 운동 '+w0.ok+'/'+w0.n+'</span>';
+  h+='</div>';
+  if(s.wrong.length){h+='<h4 style="margin:14px 0 4px">다시 볼 문항 '+s.wrong.length+'개</h4><ul class="wrongs">';
+    s.wrong.forEach(function(it){
+      h+='<li><b>Q.</b> '+esc(it.q)+'<br><b>내 답</b> '+esc(st[it.id]!==undefined?(it.opts?it.opts[st[it.id]]:st[it.id]):'(미응답)')
+       +' &nbsp;→&nbsp; <b>정답</b> '+esc(it.opts?it.opts[Number(it.a)]:(it.d||String(it.a).split('|')[0]))+'</li>';});
+    h+='</ul>';}
+  h+='<div class="nextup"><b>추천 과제 ('+label+')</b>'+TIERS[tier].map(function(x){return '· '+esc(x);}).join('<br>')+'</div>';
+  r.innerHTML=h; r.scrollIntoView({behavior:'smooth',block:'start'});}
+function onlyWrong(){var s=stats(), on=$('owbtn').dataset.on==='1';
+  ITEMS.forEach(function(it){var q=$('q'+it.id); if(!q)return;
+    q.classList.toggle('hide', !on && it.a!==null && !!solved[it.id]);});
+  $('owbtn').dataset.on = on?'0':'1';
+  $('owbtn').textContent = on?'틀린 문항만 다시 풀기':'모든 문항 보기';}
+function copyReport(){var s=stats(),L=[];
+  L.push('['+LESSON+'] 탐구 활동지 결과');
+  L.push('정답 '+s.ok+'/'+s.n+' ('+s.pct+'%)   소요 '+fmtTime(Math.floor((Date.now()-T0)/1000)));
+  if(s.wrong.length){L.push('다시 볼 문항: '+s.wrong.map(function(it){return it.q;}).join(' / '));}
+  var w=$('wrapup'); if(w&&w.value.trim()) L.push('오늘의 한 줄: '+w.value.trim());
+  var sc=[]; for(var k in st){ if(String(k).indexOf('sc')===0) sc.push(st[k]); }
+  if(sc.length) L.push('자기 점검: '+sc.join(', ')+' (3 잘함 / 2 보통 / 1 노력)');
+  copyText(L.join('\n'));}
+function save(){try{var d={st:{},tries:tries,solved:solved,rev:revealed};
+  ITEMS.forEach(function(it){var t=$('in'+it.id); if(t) d.st[it.id]=t.value;
+    else if(st[it.id]!==undefined) d.st[it.id]=st[it.id];});
+  for(var k in st) if(String(k).indexOf('sc')===0) d.st[k]=st[k];
+  var w=$('wrapup'); if(w) d.wrapup=w.value;
+  localStorage.setItem(KEY,JSON.stringify(d));}catch(e){}}
+function load(){try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');
+  tries=d.tries||{}; revealed=d.rev||{};
+  ITEMS.forEach(function(it){var t=$('in'+it.id);
+    if(t&&d.st&&d.st[it.id]!==undefined){t.value=d.st[it.id]; if(d.solved&&d.solved[it.id])chk(it.id);}
+    else if(it.opts&&d.st&&d.st[it.id]!==undefined) pick(it.id,Number(d.st[it.id]));
+    if(tries[it.id]>=3){var b=$('sv'+it.id); if(b)b.disabled=false;}});
+  if(d.st) for(var k in d.st) if(k.indexOf('sc')===0) setsc(Number(k.slice(2)),d.st[k]);
+  var w=$('wrapup'); if(w&&d.wrapup) w.value=d.wrapup;
+  }catch(e){} prog();}
+function resetAll(){if(!confirm('입력한 내용을 모두 지우고 처음부터 다시 풀까요?'))return;
+  try{localStorage.removeItem(KEY);}catch(e){} location.reload();}
+load(); startTimer('clock');
+</script></body></html>

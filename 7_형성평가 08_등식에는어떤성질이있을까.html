@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>등식에는 어떤 성질이 있을까 · 형성평가</title><style>
+/* 색상은 모두 WCAG AA(4.5:1) 이상으로 검증된 조합만 사용합니다.
+   기기가 다크 모드여도 항상 밝은 배경 + 진한 글씨로 고정됩니다. */
+*{box-sizing:border-box}
+:root{
+color-scheme:light;
+--pri:#0F766E;--prid:#115E59;--pril:#CCFBF1;--acc:#C2410C;--accl:#FFEDD5;--bg:#F1FCFA;
+--ink:#1F2937;--ink2:#3F4756;--ink3:#57606F;--line:#DCE2EC;--card:#FFFFFF;
+--ok:#0B7A43;--okbg:#E9F8EF;--no:#B3261E;--nobg:#FDECEA;--warn:#8A4B08;--warnbg:#FFF7E6;
+--fs:16px;--radius:16px;--shadow:0 2px 14px rgba(15,23,42,.09)}
+html{font-size:var(--fs);background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);
+font-family:"Pretendard",-apple-system,"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+line-height:1.65;-webkit-text-size-adjust:100%;overflow-wrap:anywhere}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inset-bottom,0px))}
+header.top{background:linear-gradient(135deg,var(--pri),var(--prid));color:#fff;
+padding:calc(22px + env(safe-area-inset-top,0px)) 0 26px}
+header.top .wrap{padding-bottom:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.chip{background:rgba(0,0,0,.22);border-radius:999px;padding:4px 12px;font-size:.8rem;font-weight:700;color:#fff}
+h1{font-size:clamp(1.35rem,4.6vw,1.9rem);margin:.08em 0 .22em;line-height:1.3;color:#fff}
+.sub{font-size:.9rem;color:#fff}
+.tools{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+.tools button{background:rgba(0,0,0,.24);color:#fff;border:1px solid rgba(255,255,255,.45)}
+.tools button:hover{background:rgba(0,0,0,.36)}
+button{font:inherit;font-weight:700;font-size:.85rem;cursor:pointer;border:0;border-radius:10px;
+padding:9px 13px;color:var(--ink);background:#EEF1F7;transition:.15s}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.btn{background:var(--pri);color:#fff}
+.btn:hover{filter:brightness(1.09)}
+.btn2{background:var(--pril);color:var(--prid)}
+.btn2:hover{filter:brightness(.96)}
+.bar{position:sticky;top:0;z-index:30;background:var(--bg);padding:10px 0 9px;
+box-shadow:0 6px 12px -10px rgba(0,0,0,.35)}
+.track{height:9px;border-radius:999px;background:var(--pril);overflow:hidden}
+.fill{height:100%;width:0;background:var(--pri);transition:width .35s}
+.meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+font-size:.8rem;font-weight:700;color:var(--ink2);margin-top:6px}
+.bigq{background:var(--card);border-radius:14px;padding:15px 17px;margin:18px 0;
+border-left:6px solid var(--acc);box-shadow:var(--shadow)}
+.bigq b{display:block;font-size:.78rem;color:var(--acc);margin-bottom:3px}
+.bigq p{margin:0;font-size:1.05rem;font-weight:700;color:var(--prid)}
+section.act{background:var(--card);border-radius:var(--radius);margin:0 0 18px;
+box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--line)}
+.acthead{background:var(--pri);padding:12px 17px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.acthead *{color:#fff}
+.acthead .n{width:27px;height:27px;border-radius:50%;background:#fff;color:var(--prid);
+display:grid;place-items:center;font-weight:800;flex:0 0 auto;font-size:.88rem}
+.acthead h2{font-size:1rem;margin:0;flex:1 1 170px}
+.acthead .min{background:rgba(0,0,0,.26);border-radius:999px;padding:2px 10px;font-size:.78rem;font-weight:700}
+.acthead .goal{font-size:.78rem;width:100%;padding-left:37px}
+.q{padding:14px 17px;border-bottom:1px solid var(--line);background:var(--card)}
+.q:last-child{border-bottom:0}
+.q.solved{background:#F3FBF6}
+.q.hide{display:none}
+.qt{display:flex;gap:9px;align-items:flex-start;margin-bottom:9px}
+.qt .i{color:var(--prid);font-weight:800;flex:0 0 auto;min-width:1.4em}
+.qt .s{flex:1;color:var(--ink)}
+.row{display:flex;gap:7px;flex-wrap:wrap;align-items:center;padding-left:26px}
+input[type=text]{flex:1 1 190px;min-width:140px;padding:10px 12px;border:2px solid #B9C2D0;
+border-radius:10px;font:inherit;font-size:1rem;background:#fff;color:var(--ink)}
+input[type=text]::placeholder{color:var(--ink3);opacity:1}
+input[type=text]:focus{outline:0;border-color:var(--pri);box-shadow:0 0 0 3px var(--pril)}
+input.ok{border-color:var(--ok);background:var(--okbg);color:var(--ink)}
+input.no{border-color:var(--no);background:var(--nobg);color:var(--ink)}
+textarea{width:100%;min-height:88px;padding:11px 12px;border:2px solid #B9C2D0;border-radius:10px;
+font:inherit;font-size:.95rem;line-height:1.6;resize:vertical;background:#fff;color:var(--ink)}
+textarea::placeholder{color:var(--ink3);opacity:1}
+textarea:focus{outline:0;border-color:var(--pri);box-shadow:0 0 0 3px var(--pril)}
+.pal{display:flex;gap:4px;flex-wrap:wrap;padding-left:26px;margin-top:7px}
+.pal button{background:var(--pril);color:var(--prid);padding:5px 10px;font-size:.95rem;border-radius:8px;font-weight:700}
+.opts{display:flex;gap:7px;flex-wrap:wrap;padding-left:26px}
+.opt{background:#fff;border:2px solid #B9C2D0;border-radius:10px;padding:9px 15px;
+font-size:.95rem;color:var(--ink);font-weight:600}
+.opt:hover{border-color:var(--pri)}
+.opt.sel{border-color:var(--pri);background:var(--pril);color:var(--prid)}
+.opt.ok{border-color:var(--ok);background:var(--okbg);color:var(--ok)}
+.opt.no{border-color:var(--no);background:var(--nobg);color:var(--no)}
+.fb{margin:9px 0 0 26px;font-size:.87rem;font-weight:700;border-radius:9px;padding:9px 12px;display:none;
+border:1px solid transparent}
+.fb.ok{display:block;background:var(--okbg);color:var(--ok);border-color:#BCE6CF}
+.fb.no{display:block;background:var(--nobg);color:var(--no);border-color:#F5C6C2}
+.fb.tip{display:block;background:var(--warnbg);color:var(--warn);border-color:#F3DFB4}
+.help{margin:8px 0 0 26px;font-size:.87rem;background:var(--accl);color:var(--ink);
+border-radius:9px;padding:10px 12px;display:none;border-left:4px solid var(--acc)}
+.help.on{display:block}
+.help b{color:var(--prid)}
+.mini{background:#F2F4F9;color:var(--ink2);padding:8px 11px;font-size:.8rem;font-weight:700}
+.mini[disabled]{color:#5F6B7E;background:#E8EBF2;cursor:not-allowed}
+.warm{background:var(--card);border-radius:var(--radius);margin-bottom:18px;
+box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--line)}
+.warm h3{margin:0;font-size:.95rem;background:var(--pril);color:var(--prid);padding:11px 17px}
+.wrapup{background:var(--accl);border:1px solid #EBD9A8;border-radius:14px;padding:15px 17px;margin:0 0 18px;color:var(--ink)}
+.wrapup b{display:block;font-size:.82rem;color:var(--warn);margin-bottom:5px}
+.sc-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+padding:4px 17px 16px;box-shadow:var(--shadow);margin-bottom:18px}
+.sc-box h3,.rep h3{font-size:1.05rem;color:var(--prid)}
+.sc{display:flex;gap:10px;align-items:center;justify-content:space-between;
+padding:10px 0;border-bottom:1px solid var(--line);flex-wrap:wrap;color:var(--ink)}
+.sc:last-child{border-bottom:0}
+.lv{display:flex;gap:5px}
+.lv button{padding:6px 12px;font-size:.8rem;background:#EEF1F7;color:var(--ink2)}
+.lv button.on{background:var(--pri);color:#fff}
+.rep{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+padding:17px;box-shadow:var(--shadow);margin-bottom:18px;display:none;color:var(--ink)}
+.rep.on{display:block}
+.score{font-size:2rem;font-weight:800;color:var(--prid);line-height:1.2}
+.pct{display:flex;align-items:center;gap:8px;margin:4px 0 12px}
+.gauge{flex:1;height:11px;border-radius:999px;background:#E3E8F1;overflow:hidden}
+.gauge i{display:block;height:100%;background:var(--ok)}
+.tag{display:inline-block;background:var(--pril);color:var(--prid);border-radius:999px;
+padding:3px 10px;font-size:.78rem;font-weight:700;margin:0 6px 5px 0}
+.rep h4{color:var(--prid);font-size:.95rem}
+.wrongs{margin:10px 0 0;padding:0;list-style:none}
+.wrongs li{border-left:4px solid var(--no);background:var(--nobg);border-radius:8px;
+padding:10px 12px;margin-bottom:7px;font-size:.88rem;color:var(--ink)}
+.wrongs b{color:var(--no)}
+.nextup{background:var(--accl);border:1px solid #EBD9A8;border-radius:10px;
+padding:12px 13px;margin-top:11px;font-size:.88rem;color:var(--ink)}
+.nextup b{display:block;color:var(--warn);margin-bottom:4px}
+.drawer{position:fixed;inset:0 0 0 auto;width:min(430px,92vw);background:#fff;color:var(--ink);
+box-shadow:-8px 0 30px rgba(0,0,0,.3);transform:translateX(102%);transition:transform .28s;
+z-index:60;overflow-y:auto;padding:calc(16px + env(safe-area-inset-top,0px)) 18px calc(28px + env(safe-area-inset-bottom,0px))}
+.drawer.on{transform:translateX(0)}
+.drawer h3{margin:4px 0 2px;font-size:1.08rem;color:var(--prid)}
+.drawer h4{margin:16px 0 4px;font-size:.95rem;color:var(--prid);border-left:4px solid var(--pri);padding-left:8px}
+.drawer p{margin:3px 0;font-size:.9rem;color:var(--ink)}
+.drawer p b{color:var(--prid)}
+.drawer .lead{font-size:.86rem;color:var(--ink2);margin-bottom:6px}
+.drawer .tipbox{background:var(--accl);border:1px solid #EBD9A8;border-radius:10px;
+padding:11px 13px;margin-top:14px;font-size:.88rem;color:var(--ink)}
+.drawer .close{position:sticky;top:0;float:right;background:var(--prid);color:#fff}
+.scrim{position:fixed;inset:0;background:rgba(15,23,42,.5);z-index:55;display:none}
+.scrim.on{display:block}
+.fabs{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;gap:8px}
+.fabs button{box-shadow:0 4px 14px rgba(0,0,0,.25)}
+footer{color:var(--ink2);font-size:.8rem;text-align:center;padding:22px 16px 8px}
+.note{font-size:.8rem;color:var(--ink2);padding-left:26px;margin-top:6px}
+@media print{
+ :root{--fs:11.5px}
+ body{background:#fff;color:#000}
+ .bar,.tools,.fabs,.drawer,.scrim,.pal,.mini,button{display:none!important}
+ header.top{background:#fff;padding:0 0 10px;border-bottom:3px solid #000}
+ header.top *{color:#000!important}
+ .chip{background:#eee;color:#000;border:1px solid #999}
+ section.act,.warm,.sc-box,.rep{box-shadow:none;border:1px solid #999;break-inside:avoid;margin-bottom:10px}
+ .acthead{background:#e8e8e8!important}
+ .acthead *{color:#000!important}
+ .acthead .n{background:#000;color:#fff!important}
+ .q{break-inside:avoid;background:#fff}
+ .q.solved{background:#fff}
+ input[type=text]{border:1px solid #666;min-height:30px;background:#fff}
+ textarea{border:1px solid #666;min-height:64px;background:#fff}
+ .fb,.help{display:none!important}
+}
+</style></head><body><header class="top"><div class="wrap"><div class="chips"><span class="chip">Ⅱ. 문자와 식</span><span class="chip">방정식과 그 해</span><span class="chip">형성평가</span></div><h1>등식에는 어떤 성질이 있을까 형성평가</h1><div class="sub">Ⅱ. 문자와 식 · 01. 방정식과 그 해 · 중학교 1학년 수학 · 8문항 100점 · 권장 10분</div><div class="tools"><button onclick="drawer(true)">📘 개념 도움말</button><button onclick="bumpFS(1)">글자 크게 A+</button><button onclick="bumpFS(-1)">글자 작게 A−</button><button onclick="window.print()">🖨 인쇄 / PDF</button><button onclick="resetAll()">↺ 다시 풀기</button></div></div></header><div class="wrap"><div class="bar"><div class="track"><div class="fill" id="fill"></div></div><div class="meta"><span id="prog">0 / 8 응답</span><span id="clock">⏱ 0:00</span><span>모두 풀면 <b>채점하기</b>를 누르세요</span></div></div><section class="act" id="q0"><div class="acthead"><span class="n">1</span><h2>선택형</h2><span class="min">10점</span></div><div class="q"><div class="qt"><span class="s">a = b 일 때 옳지 않은 것은?</span></div><div class="opts" id="o0" role="group"><button class="opt" onclick="pick(0,0)">① a + 3 = b + 3</button><button class="opt" onclick="pick(0,1)">② a − 3 = b − 3</button><button class="opt" onclick="pick(0,2)">③ 3a = 3b</button><button class="opt" onclick="pick(0,3)">④ a ÷ 0 = b ÷ 0</button></div><div class="fb" id="f0" role="status" aria-live="polite"></div><div class="help" id="s0"></div></div></section><section class="act" id="q1"><div class="acthead"><span class="n">2</span><h2>선택형</h2><span class="min">10점</span></div><div class="q"><div class="qt"><span class="s">x + 7 = 12 를 풀 때 사용해야 할 등식의 성질은?</span></div><div class="opts" id="o1" role="group"><button class="opt" onclick="pick(1,0)">① 양변에 7을 더한다</button><button class="opt" onclick="pick(1,1)">② 양변에서 7을 뺀다</button><button class="opt" onclick="pick(1,2)">③ 양변에 7을 곱한다</button><button class="opt" onclick="pick(1,3)">④ 양변을 7로 나눈다</button></div><div class="fb" id="f1" role="status" aria-live="polite"></div><div class="help" id="s1"></div></div></section><section class="act" id="q2"><div class="acthead"><span class="n">3</span><h2>선택형</h2><span class="min">10점</span></div><div class="q"><div class="qt"><span class="s">5x = 35 의 해는?</span></div><div class="opts" id="o2" role="group"><button class="opt" onclick="pick(2,0)">① x = 5</button><button class="opt" onclick="pick(2,1)">② x = 7</button><button class="opt" onclick="pick(2,2)">③ x = 30</button><button class="opt" onclick="pick(2,3)">④ x = 40</button></div><div class="fb" id="f2" role="status" aria-live="polite"></div><div class="help" id="s2"></div></div></section><section class="act" id="q3"><div class="acthead"><span class="n">4</span><h2>단답형</h2><span class="min">10점</span></div><div class="q"><div class="qt"><span class="s">방정식 x − 9 = 4 의 해를 구하시오.</span></div><div class="row"><input type="text" id="in3" autocomplete="off" aria-label="4번 답" placeholder="답 입력" oninput="prog()"></div><div class="pal" aria-label="수식 입력 도우미"><button type="button" onclick="ins('×')" tabindex="-1">×</button><button type="button" onclick="ins('÷')" tabindex="-1">÷</button><button type="button" onclick="ins('−')" tabindex="-1">−</button><button type="button" onclick="ins('²')" tabindex="-1">²</button><button type="button" onclick="ins('³')" tabindex="-1">³</button><button type="button" onclick="ins('/')" tabindex="-1">/</button><button type="button" onclick="ins('(')" tabindex="-1">(</button><button type="button" onclick="ins(')')" tabindex="-1">)</button><button type="button" onclick="ins('≠')" tabindex="-1">≠</button><button type="button" onclick="ins('½')" tabindex="-1">½</button><button type="button" onclick="ins('x')" tabindex="-1">x</button><button type="button" onclick="ins('a')" tabindex="-1">a</button></div><div class="fb" id="f3" role="status" aria-live="polite"></div><div class="help" id="s3"></div></div></section><section class="act" id="q4"><div class="acthead"><span class="n">5</span><h2>단답형</h2><span class="min">10점</span></div><div class="q"><div class="qt"><span class="s">방정식 x/4 = 3 의 해를 구하시오.</span></div><div class="row"><input type="text" id="in4" autocomplete="off" aria-label="5번 답" placeholder="답 입력" oninput="prog()"></div><div class="pal" aria-label="수식 입력 도우미"><button type="button" onclick="ins('×')" tabindex="-1">×</button><button type="button" onclick="ins('÷')" tabindex="-1">÷</button><button type="button" onclick="ins('−')" tabindex="-1">−</button><button type="button" onclick="ins('²')" tabindex="-1">²</button><button type="button" onclick="ins('³')" tabindex="-1">³</button><button type="button" onclick="ins('/')" tabindex="-1">/</button><button type="button" onclick="ins('(')" tabindex="-1">(</button><button type="button" onclick="ins(')')" tabindex="-1">)</button><button type="button" onclick="ins('≠')" tabindex="-1">≠</button><button type="button" onclick="ins('½')" tabindex="-1">½</button><button type="button" onclick="ins('x')" tabindex="-1">x</button><button type="button" onclick="ins('a')" tabindex="-1">a</button></div><div class="fb" id="f4" role="status" aria-live="polite"></div><div class="help" id="s4"></div></div></section><section class="act" id="q5"><div class="acthead"><span class="n">6</span><h2>단답형</h2><span class="min">10점</span></div><div class="q"><div class="qt"><span class="s">방정식 3x + 2 = 17 의 해를 구하시오.</span></div><div class="row"><input type="text" id="in5" autocomplete="off" aria-label="6번 답" placeholder="답 입력" oninput="prog()"></div><div class="pal" aria-label="수식 입력 도우미"><button type="button" onclick="ins('×')" tabindex="-1">×</button><button type="button" onclick="ins('÷')" tabindex="-1">÷</button><button type="button" onclick="ins('−')" tabindex="-1">−</button><button type="button" onclick="ins('²')" tabindex="-1">²</button><button type="button" onclick="ins('³')" tabindex="-1">³</button><button type="button" onclick="ins('/')" tabindex="-1">/</button><button type="button" onclick="ins('(')" tabindex="-1">(</button><button type="button" onclick="ins(')')" tabindex="-1">)</button><button type="button" onclick="ins('≠')" tabindex="-1">≠</button><button type="button" onclick="ins('½')" tabindex="-1">½</button><button type="button" onclick="ins('x')" tabindex="-1">x</button><button type="button" onclick="ins('a')" tabindex="-1">a</button></div><div class="fb" id="f5" role="status" aria-live="polite"></div><div class="help" id="s5"></div></div></section><section class="act" id="q6"><div class="acthead"><span class="n">7</span><h2>서술형</h2><span class="min">20점</span></div><div class="q"><div class="qt"><span class="s">방정식 2x − 5 = 9 를 등식의 성질만을 이용하여 풀고, 각 단계에서 사용한 성질을 쓰시오.</span></div><div><textarea id="in6" oninput="prog()" aria-label="7번 답" placeholder="풀이 과정과 까닭을 함께 쓰세요"></textarea></div><div class="pal" aria-label="수식 입력 도우미"><button type="button" onclick="ins('×')" tabindex="-1">×</button><button type="button" onclick="ins('÷')" tabindex="-1">÷</button><button type="button" onclick="ins('−')" tabindex="-1">−</button><button type="button" onclick="ins('²')" tabindex="-1">²</button><button type="button" onclick="ins('³')" tabindex="-1">³</button><button type="button" onclick="ins('/')" tabindex="-1">/</button><button type="button" onclick="ins('(')" tabindex="-1">(</button><button type="button" onclick="ins(')')" tabindex="-1">)</button><button type="button" onclick="ins('≠')" tabindex="-1">≠</button><button type="button" onclick="ins('½')" tabindex="-1">½</button><button type="button" onclick="ins('x')" tabindex="-1">x</button><button type="button" onclick="ins('a')" tabindex="-1">a</button></div><div class="fb" id="f6" role="status" aria-live="polite"></div><div class="help" id="s6"></div></div></section><section class="act" id="q7"><div class="acthead"><span class="n">8</span><h2>서술형</h2><span class="min">20점</span></div><div class="q"><div class="qt"><span class="s">등식의 양변을 0으로 나눌 수 없는 까닭을 저울이나 수의 성질을 이용하여 설명하시오.</span></div><div><textarea id="in7" oninput="prog()" aria-label="8번 답" placeholder="풀이 과정과 까닭을 함께 쓰세요"></textarea></div><div class="pal" aria-label="수식 입력 도우미"><button type="button" onclick="ins('×')" tabindex="-1">×</button><button type="button" onclick="ins('÷')" tabindex="-1">÷</button><button type="button" onclick="ins('−')" tabindex="-1">−</button><button type="button" onclick="ins('²')" tabindex="-1">²</button><button type="button" onclick="ins('³')" tabindex="-1">³</button><button type="button" onclick="ins('/')" tabindex="-1">/</button><button type="button" onclick="ins('(')" tabindex="-1">(</button><button type="button" onclick="ins(')')" tabindex="-1">)</button><button type="button" onclick="ins('≠')" tabindex="-1">≠</button><button type="button" onclick="ins('½')" tabindex="-1">½</button><button type="button" onclick="ins('x')" tabindex="-1">x</button><button type="button" onclick="ins('a')" tabindex="-1">a</button></div><div class="fb" id="f7" role="status" aria-live="polite"></div><div class="help" id="s7"></div></div></section><div style="display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 18px"><button class="btn" onclick="gradeAll()">✅ 채점하기</button><button class="btn2" onclick="showAll()">해설 모두 보기</button><button class="btn2" onclick="onlyWrong()" id="owbtn">틀린 문항만 보기</button><button class="btn2" onclick="copyReport()">📋 결과 복사(제출용)</button></div><div class="rep" id="rep"></div><footer>Ⅱ. 문자와 식 · 중학교 1학년 수학 · 형성평가 &nbsp;|&nbsp; 성취기준 [9수02-04] 방정식과 그 해의 뜻을 알고, 등식의 성질을 이해한다.</footer></div><div class="fabs"><button class="btn" onclick="drawer(true)">📘 개념</button><button class="btn2" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button></div><aside class="drawer" id="drawer" aria-hidden="true" aria-label="핵심 개념 도움말"><button class="close" onclick="drawer(false)">닫기 ✕</button><h3>핵심 개념 도움말</h3><p class="lead">등식에는 어떤 성질이 있을까</p><h4>저울로 보는 등식의 성질</h4><p class="lead">양쪽에 똑같이 하면 균형은 깨지지 않는다</p><p><b>성질 ① 더하기</b><br>a = b 이면  a + c = b + c<br>양쪽 접시에 같은 추를 올린다.</p><p><b>성질 ② 빼기</b><br>a = b 이면  a − c = b − c<br>양쪽 접시에서 같은 추를 내린다.</p><p><b>성질 ③ 곱하기</b><br>a = b 이면  ac = bc<br>양쪽을 똑같이 몇 배로 늘린다.</p><p><b>성질 ④ 나누기</b><br>a = b 이고 c ≠ 0 이면  a/c = b/c<br>양쪽을 똑같이 몇 등분한다.<br>단, 0으로는 나눌 수 없다!</p><div class="tipbox">💡 핵심은 &#x27;양쪽에 똑같이&#x27;이다. 한쪽에만 무언가를 하면 저울은 곧바로 기운다.</div><h4>성질로 방정식 풀기</h4><p class="lead">x만 홀로 남길 때까지 양쪽을 똑같이</p><p><b>목표</b><br>x = (수) 꼴로 만들기<br>x 옆의 것들을 하나씩 걷어 낸다.</p><p><b>예) x + 3 = 7</b><br>양변에서 3을 뺀다  (성질 ②)<br>x + 3 − 3 = 7 − 3<br>x = 4</p><p><b>예) 2x = 10</b><br>양변을 2로 나눈다  (성질 ④)<br>2x ÷ 2 = 10 ÷ 2<br>x = 5</p><p><b>예) 3x − 1 = 8</b><br>양변에 1을 더한다 → 3x = 9<br>양변을 3으로 나눈다 → x = 3</p><div class="tipbox">💡 어떤 성질을 썼는지 한 줄씩 적어 보자. 다음 시간에 배울 &#x27;이항&#x27;의 원리가 여기에 그대로 들어 있다.</div><h4>핵심 용어</h4><p><b>등식의 성질</b> · 양변에 같은 수를 더하거나 빼거나 곱하거나 (0이 아닌 수로) 나누어도 등식은 성립한다</p><p><b>양변</b> · 등호의 왼쪽(좌변)과 오른쪽(우변)</p><p><b>평형</b> · 저울의 두 접시가 균형을 이룬 상태</p></aside><div class="scrim" id="scrim" onclick="drawer(false)"></div><script>
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function norm(s){return (s==null?'':String(s)).trim().toLowerCase()
+  .replace(/[−–—‒－]/g,'-')
+  .replace(/[×]/g,'*').replace(/[÷]/g,'/')
+  .replace(/²/g,'2').replace(/³/g,'3').replace(/\^/g,'')
+  .replace(/\s+/g,'').replace(/[（(]/g,'(').replace(/[）)]/g,')')
+  .replace(/^x=/,'').replace(/[.,]$/,'');}
+function match(v,ansStr){var a=String(ansStr).split('|'),n=norm(v);
+  for(var i=0;i<a.length;i++){if(n===norm(a[i]))return true;}return false;}
+/* 오답 진단 — 무엇을 고쳐야 할지 알려 준다 */
+function diagnose(v,ansStr){
+  var u=norm(v); if(!u) return '답을 입력한 뒤 확인을 눌러 주세요.';
+  var alts=String(ansStr).split('|').map(norm);
+  for(var i=0;i<alts.length;i++){var a=alts[i];
+    if(u.replace(/-/g,'')===a.replace(/-/g,'')&&u!==a) return '거의 맞았어요! 부호(+, −)를 다시 확인해 보세요.';
+    if(u.replace(/[^0-9]/g,'')===a.replace(/[^0-9]/g,'')&&a.replace(/[^a-z]/g,'')!==''&&u.replace(/[^a-z]/g,'')==='')
+      return '수는 맞아요. 문자를 빠뜨리지 않았는지 확인해 보세요.';
+    if(u.split('').sort().join('')===a.split('').sort().join('')) return '쓰인 기호는 같아요. 순서와 표기 약속(수를 문자 앞에)을 확인해 보세요.';
+    if(a.indexOf('/')>=0&&u.indexOf('/')<0) return '나눗셈은 분수 꼴로 나타내 보세요.';
+    if(Math.abs(u.length-a.length)<=1) return '아주 가까워요. 한 글자만 다시 살펴보세요.';
+  }
+  return '다시 한 번 생각해 볼까요? 힌트를 열어 보세요.';
+}
+function fmtTime(sec){var m=Math.floor(sec/60),s=sec%60;return m+':'+(s<10?'0':'')+s;}
+var T0=Date.now(), TIMER=null;
+function startTimer(elId){var e=$(elId); if(!e)return;
+  TIMER=setInterval(function(){e.textContent='⏱ '+fmtTime(Math.floor((Date.now()-T0)/1000));},1000);}
+/* 글자 크기 */
+function setFS(px){try{document.documentElement.style.setProperty('--fs',px+'px');
+  localStorage.setItem('aiep_fs',px);}catch(e){}}
+function bumpFS(d){var cur=parseFloat(localStorage.getItem('aiep_fs')||'16');
+  setFS(Math.max(13,Math.min(22,cur+d)));}
+(function(){try{var f=localStorage.getItem('aiep_fs'); if(f) setFS(parseFloat(f));}catch(e){}})();
+/* 수식 입력 팔레트 */
+var FOCUSED=null;
+document.addEventListener('focusin',function(e){
+  if(e.target&&(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')) FOCUSED=e.target;});
+function ins(ch){var el=FOCUSED; if(!el) return;
+  var s=el.selectionStart||0,e=el.selectionEnd||0,v=el.value;
+  el.value=v.slice(0,s)+ch+v.slice(e); el.focus(); el.selectionStart=el.selectionEnd=s+ch.length;
+  if(el.oninput) el.oninput();}
+/* 서랍(개념 도움말) */
+function drawer(on){var d=$('drawer'),s=$('scrim'); if(!d)return;
+  d.classList.toggle('on',on); s.classList.toggle('on',on);
+  d.setAttribute('aria-hidden', on?'false':'true');}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')drawer(false);});
+/* 클립보드 */
+function copyText(t){
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(t).then(function(){alert('결과를 복사했습니다. 선생님께 붙여넣어 제출하세요.');},
+      function(){fallbackCopy(t);});
+  } else fallbackCopy(t);}
+function fallbackCopy(t){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);
+  a.select();try{document.execCommand('copy');alert('결과를 복사했습니다.');}catch(e){alert('복사에 실패했습니다. 직접 선택해 복사해 주세요.');}
+  document.body.removeChild(a);}
+
+var Q=[{"id": 0, "t": "choice", "pt": 10, "stem": "a = b 일 때 옳지 않은 것은?", "ans": "3", "disp": "3", "opts": ["a + 3 = b + 3", "a − 3 = b − 3", "3a = 3b", "a ÷ 0 = b ÷ 0"], "cans": 3, "sol": "0으로 나누는 것은 정의되지 않으므로 성립하지 않는다.", "model": "3", "rub": [], "self_": false}, {"id": 1, "t": "choice", "pt": 10, "stem": "x + 7 = 12 를 풀 때 사용해야 할 등식의 성질은?", "ans": "1", "disp": "1", "opts": ["양변에 7을 더한다", "양변에서 7을 뺀다", "양변에 7을 곱한다", "양변을 7로 나눈다"], "cans": 1, "sol": "좌변의 +7을 없애려면 양변에서 7을 빼야 한다.", "model": "1", "rub": [], "self_": false}, {"id": 2, "t": "choice", "pt": 10, "stem": "5x = 35 의 해는?", "ans": "1", "disp": "1", "opts": ["x = 5", "x = 7", "x = 30", "x = 40"], "cans": 1, "sol": "양변을 5로 나누면 x = 7", "model": "1", "rub": [], "self_": false}, {"id": 3, "t": "short", "pt": 10, "stem": "방정식 x − 9 = 4 의 해를 구하시오.", "ans": "x = 13", "disp": "x = 13", "opts": null, "cans": null, "sol": "양변에 9를 더하면 x = 13", "model": "x = 13", "rub": [], "self_": false}, {"id": 4, "t": "short", "pt": 10, "stem": "방정식 x/4 = 3 의 해를 구하시오.", "ans": "x = 12", "disp": "x = 12", "opts": null, "cans": null, "sol": "양변에 4를 곱하면 x = 12", "model": "x = 12", "rub": [], "self_": false}, {"id": 5, "t": "short", "pt": 10, "stem": "방정식 3x + 2 = 17 의 해를 구하시오.", "ans": "x = 5", "disp": "x = 5", "opts": null, "cans": null, "sol": "양변에서 2를 빼면 3x = 15, 양변을 3으로 나누면 x = 5", "model": "x = 5", "rub": [], "self_": false}, {"id": 6, "t": "essay", "pt": 20, "stem": "방정식 2x − 5 = 9 를 등식의 성질만을 이용하여 풀고, 각 단계에서 사용한 성질을 쓰시오.", "ans": null, "disp": "양변에 5를 더한다(성질 ①) → 2x = 14, 양변을 2로 나눈다(성질 ④) → x = 7", "opts": null, "cans": null, "sol": "풀이 10점, 성질 명시 10점.", "model": "양변에 5를 더한다(성질 ①) → 2x = 14, 양변을 2로 나눈다(성질 ④) → x = 7", "rub": ["단계별로 바르게 풀었다(10점)", "각 단계에 사용한 성질을 밝혔다(10점)"], "self_": true}, {"id": 7, "t": "essay", "pt": 20, "stem": "등식의 양변을 0으로 나눌 수 없는 까닭을 저울이나 수의 성질을 이용하여 설명하시오.", "ans": null, "disp": "예) 어떤 수를 0으로 나눈 값은 정하여지지 않기 때문이다. 6 ÷ 0 = ? 라고 하면 0 × ? = 6 이 되는 수가 없으므로 값을 정할 수 없다.", "opts": null, "cans": null, "sol": "0으로 나눌 수 없음의 근거 20점.", "model": "예) 어떤 수를 0으로 나눈 값은 정하여지지 않기 때문이다. 6 ÷ 0 = ? 라고 하면 0 × ? = 6 이 되는 수가 없으므로 값을 정할 수 없다.", "rub": ["0으로 나눈 값이 정해지지 않음을 설명했다(10점)", "구체적인 예나 근거를 들었다(10점)"], "self_": true}], TIERS={"basic": ["x + 4 = 9, x − 2 = 6, 3x = 15 를 각각 풀어 보자.", "a = b 일 때 a + 5 와 b + 5 의 관계를 써 보자."], "core": ["2x + 3 = 11, x/5 = 4, 4x − 7 = 5 를 각각 풀고 사용한 성질을 적어 보자.", "평형인 저울에서 양쪽 무게를 반으로 줄이면 어떻게 되는지 설명해 보자."], "adv": ["등식의 성질 ③과 ④를 이용하여 x/2 + 1 = 4 를 푸는 두 가지 순서를 비교해 보자.", "'양변에 같은 수를 곱해도 된다'는 성질이 0을 곱할 때도 유용한지 생각해 보고 까닭을 설명해 보자."]}, KEY="qz2_"+"08_등식의성질", LESSON="등식에는 어떤 성질이 있을까";
+var pickv={}, graded=false, rub={};
+function answered(q){ if(q.t==='choice') return pickv[q.id]!==undefined;
+  var t=$('in'+q.id); return t && t.value.trim().length>0;}
+function pick(i,oi){var box=$('o'+i);
+  for(var k=0;k<box.children.length;k++) box.children[k].className='opt'+(k===oi?' sel':'');
+  pickv[i]=oi; save(); prog();}
+function prog(){var n=0; Q.forEach(function(q){if(answered(q))n++;});
+  $('prog').textContent=n+' / '+Q.length+' 응답';
+  $('fill').style.width=Math.round(n*100/Q.length)+'%'; save(); return n;}
+function setRub(qi,ri,on){rub[qi+'_'+ri]=on; save(); updateSelf();}
+function updateSelf(){var el=$('selfscore'); if(!el)return;
+  var s=0; Q.forEach(function(q){ if(q.self_&&q.rub&&q.rub.length){
+    var each=q.pt/q.rub.length;
+    q.rub.forEach(function(_,ri){ if(rub[q.id+'_'+ri]) s+=each;});}});
+  el.textContent=Math.round(s);}
+function gradeAll(){graded=true;
+  var autoGot=0,autoTot=0,selfTot=0,wrong=[],byType={};
+  Q.forEach(function(q){var f=$('f'+q.id), s=$('s'+q.id);
+    byType[q.t]=byType[q.t]||{ok:0,n:0};
+    var body='<b>해설</b> '+esc(q.sol);
+    if(q.model) body+='<br><b>모범 답안</b> '+esc(q.model);
+    if(q.self_&&q.rub&&q.rub.length){
+      body+='<br><b>스스로 채점</b> — 해당하면 체크하세요<br>';
+      q.rub.forEach(function(rt,ri){
+        body+='<label style="display:block;margin:3px 0"><input type="checkbox" '
+          +(rub[q.id+'_'+ri]?'checked ':'')+'onchange="setRub('+q.id+','+ri+',this.checked)"> '+esc(rt)+'</label>';});}
+    s.innerHTML=body; s.classList.add('on');
+    if(q.t==='choice'){
+      var ok=(pickv[q.id]===q.cans); autoTot+=q.pt; byType[q.t].n++;
+      if(ok){autoGot+=q.pt; byType[q.t].ok++;} else wrong.push({q:q,mine:(pickv[q.id]!==undefined?q.opts[pickv[q.id]]:'(미응답)'),ans:q.opts[q.cans]});
+      var box=$('o'+q.id);
+      for(var k=0;k<box.children.length;k++)
+        box.children[k].className='opt'+(k===pickv[q.id]?(ok?' ok':' no'):'')+((!ok&&k===q.cans)?' ok':'');
+      f.className='fb '+(ok?'ok':'no'); f.textContent=ok?'✅ 정답':'❌ 오답';
+    } else if(!q.self_){
+      var v=($('in'+q.id)||{}).value||''; var ok2=match(v,q.ans);
+      autoTot+=q.pt; byType[q.t].n++;
+      if(ok2){autoGot+=q.pt; byType[q.t].ok++;} else wrong.push({q:q,mine:v||'(미응답)',ans:(q.disp||String(q.ans).split('|')[0])});
+      var inp=$('in'+q.id); if(inp) inp.className=ok2?'ok':'no';
+      f.className='fb '+(ok2?'ok':'no');
+      f.textContent=ok2?'✅ 정답':('❌ 오답 · 정답 '+(q.disp||'')+' · '+diagnose(v,q.ans));
+    } else { selfTot+=q.pt;
+      f.className='fb tip'; f.textContent='✍ 스스로 채점 문항 ('+q.pt+'점) — 채점 요소를 체크해 점수를 매겨 보세요.';}
+  });
+  var pct=autoTot?Math.round(autoGot*100/autoTot):0;
+  var tier=pct>=80?'adv':(pct>=60?'core':'basic');
+  var label=pct>=80?'심화':(pct>=60?'기본':'보충');
+  var msg=pct>=80?'훌륭합니다! 심화 과제로 나아가 보세요.'
+        :(pct>=60?'잘했어요. 오답 노트를 채우고 해설을 꼭 읽어 보세요.'
+                 :'개념 도움말과 보충 과제로 기초를 다시 다져 봐요.');
+  var h='<h3>채점 결과</h3><div class="score">'+autoGot+' / '+autoTot+'점</div>'
+   +'<div class="pct"><div class="gauge"><i style="width:'+pct+'%"></i></div><b>'+pct+'%</b></div>'
+   +'<p style="margin:0 0 8px">'+msg+'</p><div>';
+  for(var t in byType){ if(!byType[t].n) continue;
+    h+='<span class="tag">'+TYPE_KO[t]+' '+byType[t].ok+'/'+byType[t].n+'</span>';}
+  if(selfTot) h+='<span class="tag">서술형 '+selfTot+'점 · 스스로 채점 <b id="selfscore">0</b>점</span>';
+  h+='</div>';
+  if(wrong.length){h+='<h4 style="margin:14px 0 4px">오답 노트 '+wrong.length+'문항</h4><ul class="wrongs">';
+    wrong.forEach(function(w){h+='<li><b>Q'+(w.q.id+1)+'.</b> '+esc(w.q.stem)
+      +'<br><b>내 답</b> '+esc(w.mine)+' &nbsp;→&nbsp; <b>정답</b> '+esc(w.ans)
+      +'<br><span style="color:var(--ink2)">'+esc(w.q.sol)+'</span></li>';});
+    h+='</ul>';}
+  h+='<div class="nextup"><b>추천 과제 ('+label+')</b>'+TIERS[tier].map(function(x){return '· '+esc(x);}).join('<br>')+'</div>';
+  $('rep').innerHTML=h; $('rep').classList.add('on'); updateSelf();
+  $('rep').scrollIntoView({behavior:'smooth',block:'start'}); save();}
+function showAll(){Q.forEach(function(q){var s=$('s'+q.id);
+  s.innerHTML='<b>해설</b> '+esc(q.sol)+(q.model?('<br><b>모범 답안</b> '+esc(q.model)):''); s.classList.add('on');});}
+function onlyWrong(){if(!graded){alert('먼저 채점하기를 눌러 주세요.');return;}
+  var on=$('owbtn').dataset.on==='1';
+  Q.forEach(function(q){var sec=$('q'+q.id); if(!sec)return;
+    var ok = q.t==='choice' ? (pickv[q.id]===q.cans)
+           : (!q.self_ ? match((($('in'+q.id)||{}).value||''),q.ans) : false);
+    sec.style.display = (!on && ok) ? 'none' : '';});
+  $('owbtn').dataset.on=on?'0':'1';
+  $('owbtn').textContent=on?'틀린 문항만 보기':'모든 문항 보기';}
+function copyReport(){var L=[]; L.push('['+LESSON+'] 형성평가 결과');
+  L.push('소요 '+fmtTime(Math.floor((Date.now()-T0)/1000)));
+  Q.forEach(function(q){var v = q.t==='choice' ? (pickv[q.id]!==undefined?q.opts[pickv[q.id]]:'(미응답)')
+    : ((($('in'+q.id)||{}).value||'(미응답)'));
+    L.push((q.id+1)+'. '+v);});
+  copyText(L.join('\n'));}
+function save(){try{var d={p:pickv,v:{},rub:rub};
+  Q.forEach(function(q){var t=$('in'+q.id); if(t) d.v[q.id]=t.value;});
+  localStorage.setItem(KEY,JSON.stringify(d));}catch(e){}}
+function load(){try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');
+  if(d.p) for(var k in d.p) pick(Number(k),d.p[k]);
+  if(d.v) for(var k2 in d.v){var t=$('in'+k2); if(t) t.value=d.v[k2];}
+  rub=d.rub||{};}catch(e){} prog();}
+function resetAll(){if(!confirm('입력한 답을 모두 지우고 다시 풀까요?'))return;
+  try{localStorage.removeItem(KEY);}catch(e){} location.reload();}
+var TYPE_KO={choice:'선택형',short:'단답형',essay:'서술형'};
+load(); startTimer('clock');
+</script></body></html>
