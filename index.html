@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>중1 수학 Ⅱ. 문자와 식 · 탐구 활동지와 형성평가</title>
+<meta name="description" content="중학교 1학년 수학 Ⅱ. 문자와 식 단원의 탐구 활동지 10종과 형성평가 10종. 로그인 없이 이용하며 답안은 이용자 기기에만 저장됩니다.">
+<style>
+/* 차시 페이지와 같은 색 체계를 씁니다. 기기가 다크 모드여도 밝은 배경 + 진한 글씨로 고정됩니다. */
+*{box-sizing:border-box}
+:root{color-scheme:light;
+--pri:#2563EB;--prid:#1E3A8A;--pril:#DBEAFE;--acc:#B45309;--accl:#FEF3C7;--bg:#F4F7FE;
+--ink:#1F2937;--ink2:#3F4756;--ink3:#57606F;--line:#DCE2EC;--card:#FFFFFF;
+--ok:#0B7A43;--okbg:#E9F8EF;--warn:#8A4B08;--warnbg:#FFF7E6;
+--radius:16px;--shadow:0 2px 14px rgba(15,23,42,.09)}
+html{font-size:16px;background:var(--bg);scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+font-family:"Pretendard",-apple-system,"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+line-height:1.65;-webkit-text-size-adjust:100%;overflow-wrap:anywhere;word-break:keep-all}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px}
+a{color:var(--prid)}
+a:focus-visible{outline:3px solid var(--acc);outline-offset:2px;border-radius:6px}
+
+header.top{background:linear-gradient(135deg,var(--pri),var(--prid));color:#fff;
+padding:calc(26px + env(safe-area-inset-top,0px)) 0 30px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chip{background:rgba(0,0,0,.22);border-radius:999px;padding:4px 12px;font-size:.8rem;font-weight:700}
+h1{font-size:clamp(1.5rem,5.2vw,2.15rem);margin:0 0 .3em;line-height:1.28;text-wrap:balance}
+.lead{margin:0;font-size:1rem;max-width:38em}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.facts li{background:#fff;color:var(--prid);border-radius:10px;padding:6px 12px;font-size:.85rem;font-weight:700}
+
+nav.bar{position:sticky;top:0;z-index:30;background:var(--bg);box-shadow:0 6px 12px -10px rgba(0,0,0,.35)}
+nav.bar .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:9px;padding-bottom:9px;scrollbar-width:none}
+nav.bar a{flex:0 0 auto;text-decoration:none;font-weight:700;font-size:.87rem;color:var(--ink2);
+background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+nav.bar a:hover{border-color:var(--pri);color:var(--prid)}
+
+main{padding-bottom:calc(56px + env(safe-area-inset-bottom,0px))}
+h2{font-size:1.3rem;margin:38px 0 4px;color:var(--prid);line-height:1.35}
+.h2sub{margin:0 0 16px;color:var(--ink2);font-size:.93rem}
+
+/* 차시 목록 */
+.grp{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin:0 0 18px;overflow:hidden}
+.grp h3{margin:0;background:var(--pri);color:#fff;font-size:1rem;padding:12px 17px;display:flex;align-items:center;gap:10px}
+.gn{width:27px;height:27px;border-radius:50%;background:#fff;color:var(--prid);display:grid;place-items:center;font-weight:800;font-size:.88rem;flex:0 0 auto}
+.gr{margin-left:auto;background:rgba(0,0,0,.26);border-radius:999px;padding:2px 10px;font-size:.78rem;flex:0 0 auto}
+.ls{list-style:none;margin:0;padding:0}
+.l{display:grid;grid-template-columns:auto 1fr auto;gap:6px 14px;align-items:center;padding:14px 17px;border-bottom:1px solid var(--line)}
+.l:last-child{border-bottom:0}
+.ln{font-weight:800;font-size:1.25rem;color:var(--pri);font-variant-numeric:tabular-nums;min-width:1.7em}
+.lt p{margin:0}
+.t{font-weight:800;font-size:1.02rem;line-height:1.4}
+.q{color:var(--ink2);font-size:.88rem;margin-top:2px !important}
+.s{color:var(--ink3);font-size:.76rem;font-weight:700;margin-top:3px !important}
+.la{display:flex;gap:8px}
+.b{display:flex;flex-direction:column;justify-content:center;text-decoration:none;border-radius:11px;padding:8px 13px;min-width:132px;max-width:230px;line-height:1.3;transition:.15s}
+.b span{font-weight:800;font-size:.92rem}
+.b small{font-size:.72rem;font-weight:600;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.b1{background:var(--pri);color:#fff}
+.b1:hover{filter:brightness(1.1)}
+.b2{background:var(--pril);color:var(--prid)}
+.b2:hover{filter:brightness(.96)}
+@media(max-width:700px){
+.l{grid-template-columns:auto 1fr}
+.la{grid-column:1/-1}
+.b{flex:1 1 0;min-width:0;max-width:none}
+}
+
+/* 안내 카드 */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.card h3{margin:0 0 8px;font-size:1rem;color:var(--prid)}
+.card ul,.card ol{margin:0;padding-left:1.15em;font-size:.92rem}
+.card li{margin:.3em 0}
+.note{background:var(--warnbg);border:1px solid #F3DFB4;border-left:5px solid var(--acc);color:var(--ink);border-radius:12px;padding:12px 15px;font-size:.92rem;margin:14px 0 0}
+.note b{color:var(--warn)}
+
+/* 표 */
+.tbl{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+tr:last-child>th,tr:last-child>td{border-bottom:0}
+thead th{background:#EEF3FD;color:var(--prid);font-size:.84rem;white-space:nowrap}
+tbody th{background:#F7F9FD;color:var(--prid);font-weight:700;width:9.5em}
+td ul{margin:0;padding-left:1.1em}
+td li{margin:.2em 0}
+#checklist+p+.tbl td:last-child{white-space:nowrap}
+.todo{background:var(--accl);color:var(--warn);font-weight:800;border-radius:6px;padding:1px 7px;border:1px dashed var(--acc)}
+
+/* 처리방침 */
+.policy{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:6px 20px 18px}
+.sum{background:var(--okbg);border:1px solid #BCE6CF;border-radius:12px;padding:12px 15px;margin:14px 0 4px;font-weight:700;color:var(--ok)}
+.pl{margin:12px 0 4px;padding-left:1.3em;font-size:.94rem}
+.pl li{margin:.35em 0}
+.more{margin:14px 0 0}
+.go{display:inline-flex;max-width:none}
+footer{color:var(--ink3);font-size:.8rem;text-align:center;padding:26px 16px 0}
+
+@media print{
+nav.bar,.la{display:none}
+html,body{background:#fff}
+header.top{background:#fff;color:#000;padding:0 0 10px}
+.chip{background:#eee;color:#000}.facts li{border:1px solid #999}
+.grp,.card,.tbl,.policy{box-shadow:none;break-inside:avoid-page}
+.grp h3{background:#eee;color:#000}
+}
+</style></head>
+<body>
+<header class="top"><div class="wrap">
+<div class="chips"><span class="chip">중학교 1학년 수학</span><span class="chip">Ⅱ. 문자와 식</span><span class="chip">10차시 · 자료 20종</span></div>
+<h1>문자와 식 탐구 활동지와 형성평가</h1>
+<p class="lead">차시마다 탐구 활동지로 배우고, 형성평가로 확인합니다. 답을 쓰면 바로 채점되고, 힌트와 해설을 볼 수 있습니다.</p>
+<ul class="facts"><li>로그인 없음</li><li>이름·학번 입력 없음</li><li>무료 · 광고 없음</li></ul>
+</div></header>
+
+<nav class="bar" aria-label="이 페이지 안에서 이동"><div class="wrap">
+<a href="#lessons">차시 목록</a><a href="#guide">이용 안내</a><a href="#about">서비스 개요</a><a href="#privacy">개인정보 처리방침</a><a href="#checklist">필수기준 확인 위치</a>
+</div></nav>
+
+<main class="wrap">
+
+<h2 id="lessons">차시 목록</h2>
+<p class="h2sub">배우는 차시의 <b>탐구 활동지</b>를 먼저 풀고, <b>형성평가</b>로 확인하세요.</p>
+<section class="grp"><h3><span class="gn">1</span>문자의 사용과 식의 값<span class="gr">1~3차시</span></h3><ol class="ls"><li class="l"><div class="ln" aria-hidden="true">01</div><div class="lt"><p class="t">문자와 식, 무엇을 배울까</p><p class="q">숫자만으로는 부족한 순간은 언제일까? 그때 문자는 무엇을 해 줄까?</p><p class="s">[9수02-01]</p></div><div class="la"><a class="b b1" href="6_%ED%83%90%EA%B5%AC%ED%99%9C%EB%8F%99%EC%A7%80%2001_%EB%AC%B8%EC%9E%90%EC%99%80%EC%8B%9D%EB%AC%B4%EC%97%87%EC%9D%84%EB%B0%B0%EC%9A%B8%EA%B9%8C.html"><span>탐구 활동지</span><small>단원 탐험 지도 만들기</small></a><a class="b b2" href="7_%ED%98%95%EC%84%B1%ED%8F%89%EA%B0%80%2001_%EB%AC%B8%EC%9E%90%EC%99%80%EC%8B%9D%EB%AC%B4%EC%97%87%EC%9D%84%EB%B0%B0%EC%9A%B8%EA%B9%8C.html"><span>형성평가</span><small>7문항 · 10분</small></a></div></li><li class="l"><div class="ln" aria-hidden="true">02</div><div class="lt"><p class="t">문자를 사용하여 식을 어떻게 나타낼까</p><p class="q">같은 상황을 여러 사람이 써도 똑같은 식이 되려면 어떤 약속이 필요할까?</p><p class="s">[9수02-01]</p></div><div class="la"><a class="b b1" href="6_%ED%83%90%EA%B5%AC%ED%99%9C%EB%8F%99%EC%A7%80%2002_%EB%AC%B8%EC%9E%90%EB%A5%BC%EC%82%AC%EC%9A%A9%ED%95%98%EC%97%AC%EC%8B%9D%EC%9D%84%EC%96%B4%EB%96%BB%EA%B2%8C%EB%82%98%ED%83%80%EB%82%BC%EA%B9%8C.html"><span>탐구 활동지</span><small>식을 간단하게! 생략 약속 마스터</small></a><a class="b b2" href="7_%ED%98%95%EC%84%B1%ED%8F%89%EA%B0%80%2002_%EB%AC%B8%EC%9E%90%EB%A5%BC%EC%82%AC%EC%9A%A9%ED%95%98%EC%97%AC%EC%8B%9D%EC%9D%84%EC%96%B4%EB%96%BB%EA%B2%8C%EB%82%98%ED%83%80%EB%82%BC%EA%B9%8C.html"><span>형성평가</span><small>8문항 · 10분</small></a></div></li><li class="l"><div class="ln" aria-hidden="true">03</div><div class="lt"><p class="t">식의 값은 어떻게 구할까</p><p class="q">같은 식이라도 넣는 수에 따라 값이 달라지는 까닭은 무엇일까?</p><p class="s">[9수02-02]</p></div><div class="la"><a class="b b1" href="6_%ED%83%90%EA%B5%AC%ED%99%9C%EB%8F%99%EC%A7%80%2003_%EC%8B%9D%EC%9D%98%EA%B0%92%EC%9D%80%EC%96%B4%EB%96%BB%EA%B2%8C%EA%B5%AC%ED%95%A0%EA%B9%8C.html"><span>탐구 활동지</span><small>대입 실험실 — 값을 넣으면 무엇이 달라질까</small></a><a class="b b2" href="7_%ED%98%95%EC%84%B1%ED%8F%89%EA%B0%80%2003_%EC%8B%9D%EC%9D%98%EA%B0%92%EC%9D%80%EC%96%B4%EB%96%BB%EA%B2%8C%EA%B5%AC%ED%95%A0%EA%B9%8C.html"><span>형성평가</span><small>8문항 · 10분</small></a></div></li></ol></section><section class="grp"><h3><span class="gn">2</span>일차식과 그 계산<span class="gr">4~6차시</span></h3><ol class="ls"><li class="l"><div class="ln" aria-hidden="true">04</div><div class="lt"><p class="t">일차식은 무엇일까</p><p class="q">식을 조각내어 이름을 붙이면 무엇이 편해질까?</p><p class="s">[9수02-03]</p></div><div class="la"><a class="b b1" href="6_%ED%83%90%EA%B5%AC%ED%99%9C%EB%8F%99%EC%A7%80%2004_%EC%9D%BC%EC%B0%A8%EC%8B%9D%EC%9D%80%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C.html"><span>탐구 활동지</span><small>식 해부실 — 이름을 붙여 주세요</small></a><a class="b b2" href="7_%ED%98%95%EC%84%B1%ED%8F%89%EA%B0%80%2004_%EC%9D%BC%EC%B0%A8%EC%8B%9D%EC%9D%80%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C.html"><span>형성평가</span><small>8문항 · 10분</small></a></div></li><li class="l"><div class="ln" aria-hidden="true">05</div><div class="lt"><p class="t">일차식과 수의 곱셈, 나눗셈은 어떻게 할까</p><p class="q">괄호 밖의 수는 괄호 안의 무엇에, 몇 번 곱해야 할까?</p><p class="s">[9수02-03]</p></div><div class="la"><a class="b b1" href="6_%ED%83%90%EA%B5%AC%ED%99%9C%EB%8F%99%EC%A7%80%2005_%EC%9D%BC%EC%B0%A8%EC%8B%9D%EA%B3%BC%EC%88%98%EC%9D%98%EA%B3%B1%EC%85%88%EB%82%98%EB%88%97%EC%85%88%EC%9D%80%EC%96%B4%EB%96%BB%EA%B2%8C%ED%95%A0%EA%B9%8C.html"><span>탐구 활동지</span><small>괄호 열기 작전 — 분배법칙 훈련소</small></a><a class="b b2" href="7_%ED%98%95%EC%84%B1%ED%8F%89%EA%B0%80%2005_%EC%9D%BC%EC%B0%A8%EC%8B%9D%EA%B3%BC%EC%88%98%EC%9D%98%EA%B3%B1%EC%85%88%EB%82%98%EB%88%97%EC%85%88%EC%9D%80%EC%96%B4%EB%96%BB%EA%B2%8C%ED%95%A0%EA%B9%8C.html"><span>형성평가</span><small>8문항 · 10분</small></a></div></li><li class="l"><div class="ln" aria-hidden="true">06</div><div class="lt"><p class="t">일차식의 덧셈, 뺄셈은 어떻게 할까</p><p class="q">식을 간단히 한다는 것은 무엇을 어떻게 하는 것일까?</p><p class="s">[9수02-03]</p></div><div class="la"><a class="b b1" href="6_%ED%83%90%EA%B5%AC%ED%99%9C%EB%8F%99%EC%A7%80%2006_%EC%9D%BC%EC%B0%A8%EC%8B%9D%EC%9D%98%EB%8D%A7%EC%85%88%EB%BA%84%EC%85%88%EC%9D%80%EC%96%B4%EB%96%BB%EA%B2%8C%ED%95%A0%EA%B9%8C.html"><span>탐구 활동지</span><small>같은 것끼리 모아라 — 동류항 정리 대작전</small></a><a class="b b2" href="7_%ED%98%95%EC%84%B1%ED%8F%89%EA%B0%80%2006_%EC%9D%BC%EC%B0%A8%EC%8B%9D%EC%9D%98%EB%8D%A7%EC%85%88%EB%BA%84%EC%85%88%EC%9D%80%EC%96%B4%EB%96%BB%EA%B2%8C%ED%95%A0%EA%B9%8C.html"><span>형성평가</span><small>8문항 · 10분</small></a></div></li></ol></section><section class="grp"><h3><span class="gn">3</span>방정식과 그 해<span class="gr">7~8차시</span></h3><ol class="ls"><li class="l"><div class="ln" aria-hidden="true">07</div><div class="lt"><p class="t">등식과 방정식은 무엇일까</p><p class="q">모든 등식이 방정식일까? 방정식의 &#x27;해&#x27;는 무엇을 뜻할까?</p><p class="s">[9수02-04]</p></div><div class="la"><a class="b b1" href="6_%ED%83%90%EA%B5%AC%ED%99%9C%EB%8F%99%EC%A7%80%2007_%EB%93%B1%EC%8B%9D%EA%B3%BC%EB%B0%A9%EC%A0%95%EC%8B%9D%EC%9D%80%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C.html"><span>탐구 활동지</span><small>참 거짓 판정단 — 등식의 정체를 밝혀라</small></a><a class="b b2" href="7_%ED%98%95%EC%84%B1%ED%8F%89%EA%B0%80%2007_%EB%93%B1%EC%8B%9D%EA%B3%BC%EB%B0%A9%EC%A0%95%EC%8B%9D%EC%9D%80%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C.html"><span>형성평가</span><small>8문항 · 10분</small></a></div></li><li class="l"><div class="ln" aria-hidden="true">08</div><div class="lt"><p class="t">등식에는 어떤 성질이 있을까</p><p class="q">저울의 균형을 깨지 않으면서 x만 남기려면 어떻게 해야 할까?</p><p class="s">[9수02-04]</p></div><div class="la"><a class="b b1" href="6_%ED%83%90%EA%B5%AC%ED%99%9C%EB%8F%99%EC%A7%80%2008_%EB%93%B1%EC%8B%9D%EC%97%90%EB%8A%94%EC%96%B4%EB%96%A4%EC%84%B1%EC%A7%88%EC%9D%B4%EC%9E%88%EC%9D%84%EA%B9%8C.html"><span>탐구 활동지</span><small>저울 균형 실험실 — 양쪽을 똑같이!</small></a><a class="b b2" href="7_%ED%98%95%EC%84%B1%ED%8F%89%EA%B0%80%2008_%EB%93%B1%EC%8B%9D%EC%97%90%EB%8A%94%EC%96%B4%EB%96%A4%EC%84%B1%EC%A7%88%EC%9D%B4%EC%9E%88%EC%9D%84%EA%B9%8C.html"><span>형성평가</span><small>8문항 · 10분</small></a></div></li></ol></section><section class="grp"><h3><span class="gn">4</span>일차방정식과 그 풀이<span class="gr">9~10차시</span></h3><ol class="ls"><li class="l"><div class="ln" aria-hidden="true">09</div><div class="lt"><p class="t">일차방정식은 무엇이고 어떻게 풀까</p><p class="q">항을 넘길 때 부호가 바뀌는 까닭은 무엇일까?</p><p class="s">[9수02-05]</p></div><div class="la"><a class="b b1" href="6_%ED%83%90%EA%B5%AC%ED%99%9C%EB%8F%99%EC%A7%80%2009_%EC%9D%BC%EC%B0%A8%EB%B0%A9%EC%A0%95%EC%8B%9D%EC%9D%80%EB%AC%B4%EC%97%87%EC%9D%B4%EA%B3%A0%EC%96%B4%EB%96%BB%EA%B2%8C%ED%92%80%EA%B9%8C.html"><span>탐구 활동지</span><small>이항 탐정단 — 부호가 바뀐 이유를 밝혀라</small></a><a class="b b2" href="7_%ED%98%95%EC%84%B1%ED%8F%89%EA%B0%80%2009_%EC%9D%BC%EC%B0%A8%EB%B0%A9%EC%A0%95%EC%8B%9D%EC%9D%80%EB%AC%B4%EC%97%87%EC%9D%B4%EA%B3%A0%EC%96%B4%EB%96%BB%EA%B2%8C%ED%92%80%EA%B9%8C.html"><span>형성평가</span><small>8문항 · 10분</small></a></div></li><li class="l"><div class="ln" aria-hidden="true">10</div><div class="lt"><p class="t">여러 가지 일차방정식을 풀어 볼까</p><p class="q">복잡해 보이는 방정식을 간단하게 만드는 방법은 무엇일까?</p><p class="s">[9수02-05]</p></div><div class="la"><a class="b b1" href="6_%ED%83%90%EA%B5%AC%ED%99%9C%EB%8F%99%EC%A7%80%2010_%EC%97%AC%EB%9F%AC%EA%B0%80%EC%A7%80%EC%9D%BC%EC%B0%A8%EB%B0%A9%EC%A0%95%EC%8B%9D%EC%9D%84%ED%92%80%EC%96%B4%EB%B3%BC%EA%B9%8C.html"><span>탐구 활동지</span><small>방정식 변신 공장 — 정수로 바꿔라</small></a><a class="b b2" href="7_%ED%98%95%EC%84%B1%ED%8F%89%EA%B0%80%2010_%EC%97%AC%EB%9F%AC%EA%B0%80%EC%A7%80%EC%9D%BC%EC%B0%A8%EB%B0%A9%EC%A0%95%EC%8B%9D%EC%9D%84%ED%92%80%EC%96%B4%EB%B3%BC%EA%B9%8C.html"><span>형성평가</span><small>8문항 · 10분</small></a></div></li></ol></section>
+
+<h2 id="guide">이용 안내</h2>
+<p class="h2sub">학생과 선생님이 알아 두면 좋은 점입니다.</p>
+<div class="cards">
+<div class="card"><h3>학생</h3><ul>
+<li>가입이나 로그인 없이 주소만 열면 바로 풀 수 있습니다.</li>
+<li>쓴 답은 <b>지금 쓰는 기기의 브라우저에만</b> 저장됩니다. 다른 기기에서는 이어지지 않습니다.</li>
+<li>제출은 <b>결과 복사(제출용)</b>를 누른 뒤, 선생님이 알려 준 곳에 붙여 넣습니다.</li>
+<li>함께 쓰는 기기에서는 다 쓴 뒤 <b>다시 풀기</b>를 눌러 기록을 지워 주세요.</li>
+</ul></div>
+<div class="card"><h3>선생님</h3><ul>
+<li>차시 주소를 그대로 수업 도구에 붙여 안내할 수 있습니다.</li>
+<li>학생의 답과 점수는 공급자나 교사에게 자동으로 전송되지 않습니다. 필요하면 학생이 복사한 결과를 학교에서 쓰는 도구로 받으세요.</li>
+<li><b>인쇄 / PDF</b>로 종이 학습지처럼 쓸 수 있습니다.</li>
+<li>글자 크기 조절, 개념 도움말, 수식 입력 버튼을 모든 차시에서 쓸 수 있습니다.</li>
+</ul></div>
+</div>
+<p class="note"><b>꼭 지켜 주세요.</b> 서술형 답 칸에는 이름, 학번, 연락처 같은 개인정보를 쓰지 않습니다. 이 서비스는 이름과 학번을 받지 않습니다.</p>
+
+<h2 id="about">서비스 개요</h2>
+<p class="h2sub">학습지원 소프트웨어 필수기준 체크리스트의 「제품/서비스 개요」에 해당하는 내용입니다.</p>
+<div class="tbl"><table><tbody>
+<tr><th scope="row">제품/서비스명</th><td>중1 수학 「Ⅱ. 문자와 식」 탐구 활동지·형성평가</td></tr>
+<tr><th scope="row">공급자</th><td><span class="todo">공급자명 입력 필요</span></td></tr>
+<tr><th scope="row">접속경로</th><td><a id="siteurl" href="https://mintkakao999-hub.github.io/aiep-math-m1/">https://mintkakao999-hub.github.io/aiep-math-m1/</a></td></tr>
+<tr><th scope="row">주요 내용 및 기능·특장점</th><td><ul>
+<li>중학교 1학년 수학 「Ⅱ. 문자와 식」 단원 10차시의 탐구 활동지 10종과 형성평가 10종을 제공하는 웹 학습 자료입니다. 성취기준 [9수02-01]~[9수02-05]에 맞추어 구성했습니다.</li>
+<li>답을 쓰면 바로 채점하고, 힌트·정답·해설과 차시별 개념 도움말을 보여 줍니다.</li>
+<li>수식 입력 버튼, 글자 크기 조절, 인쇄/PDF 저장, 결과 복사(제출용)를 지원합니다.</li>
+<li>회원가입과 로그인 없이 누구나 무료로 이용하며, 광고와 외부 분석 도구가 없습니다.</li>
+<li>이름·학번을 받지 않으며, 답안과 풀이 상태는 이용자 기기의 브라우저에만 저장되고 운영자에게 전송되지 않습니다.</li>
+</ul></td></tr>
+</tbody></table></div>
+
+<h2 id="privacy">개인정보 처리방침</h2>
+<p class="h2sub">시행일 2026년 10월 12일 · 전문은 별도 페이지에 있습니다.</p>
+<div class="policy">
+<p class="sum">이 서비스는 이름·학번을 받지 않으며, 답안을 운영자에게 보내지 않습니다.</p>
+<ol class="pl">
+<li>회원가입·로그인 없이 이용하며, 이름·학번을 입력하는 칸이 없습니다.</li>
+<li>입력한 답안과 풀이 상태는 이용자 기기의 브라우저 저장소(localStorage)에만 저장되며, 운영자의 서버·외부 데이터베이스·AI API로 전송되지 않습니다.</li>
+<li>웹사이트 호스팅을 GitHub, Inc.(GitHub Pages)에 위탁합니다. 접속 과정에서 IP 주소 등 접속 기술정보를 GitHub가 처리합니다.</li>
+<li>개인정보 보호책임자: <span class="todo">성명, 연락처 입력 필요</span></li>
+</ol>
+<p class="more"><a class="b b1 go" href="privacy.html"><span>개인정보 처리방침 전문 보기</span><small>제1조~제11조 · 인쇄 / PDF 저장 가능</small></a></p>
+</div>
+
+<h2 id="checklist">필수기준 확인 위치</h2>
+<p class="h2sub">학습지원 소프트웨어 필수기준 체크리스트의 개인정보보호 항목별로, 개인정보 처리방침의 어느 조항에서 확인할 수 있는지 정리했습니다.</p>
+<div class="tbl"><table>
+<thead><tr><th>선정기준</th><th>세부 내용</th><th>확인 위치</th></tr></thead>
+<tbody>
+<tr><th scope="rowgroup" rowspan="3">1. 최소처리 원칙 준수</th><td>1-1. 개인정보가 최소한으로 수집되는가?</td><td><a href="privacy.html#a1">제1조</a>, <a href="privacy.html#a2">제2조</a></td></tr>
+<tr><td>1-2. 개인정보 수집·이용 목적이 기재되어 있는가?</td><td><a href="privacy.html#a1">제1조</a></td></tr>
+<tr><td>1-3. 개인정보 수집항목, 보유기간 등이 기재되어 있는가?</td><td><a href="privacy.html#a2">제2조</a>, <a href="privacy.html#a3">제3조</a></td></tr>
+<tr><th scope="rowgroup" rowspan="1">2. 개인정보 안전조치 의무</th><td>2-1. 개인정보 안전성 확보에 필요한 조치 사항이 기재되어 있는가?</td><td><a href="privacy.html#a7">제7조</a></td></tr>
+<tr><th scope="rowgroup" rowspan="1">3. 열람/정정/삭제/처리정지 절차</th><td>3-1. 이용자에게 언제든지 자신의 정보를 열람·정정·삭제·처리정지를 요구할 수 있는 절차가 안내되어 있는가?</td><td><a href="privacy.html#a6">제6조</a></td></tr>
+<tr><th scope="rowgroup" rowspan="1">4. 만 14세 미만 아동의 개인정보 보호</th><td>4-1. 만 14세 미만 아동의 경우 법정대리인 동의 등 아동의 개인정보 보호를 위한 절차가 마련되어 있는가?</td><td><a href="privacy.html#a4">제4조</a></td></tr>
+<tr><th scope="rowgroup" rowspan="3">5. 보호책임자/제3자 제공/위탁 등</th><td>5-1. 개인정보 보호책임자 관련 정보가 안내되어 있는가?</td><td><a href="privacy.html#a9">제9조</a></td></tr>
+<tr><td>5-2. 개인정보 제3자 제공에 관한 정보가 기재되어 있는가? (필요시)</td><td><a href="privacy.html#a5">제5조</a> ①</td></tr>
+<tr><td>5-3. 개인정보 위·수탁관계에 관한 정보가 기재되어 있는가? (필요시)</td><td><a href="privacy.html#a5">제5조</a> ②~④</td></tr>
+</tbody></table></div>
+<p class="h2sub" style="margin-top:12px">개인정보 처리방침 확인 방법: <a id="privurl" href="privacy.html">https://mintkakao999-hub.github.io/aiep-math-m1/privacy.html</a></p>
+
+<footer>Ⅱ. 문자와 식 · 중학교 1학년 수학 · 탐구 활동지와 형성평가</footer>
+</main>
+<script>
+/* 접속경로 표기를 실제로 열린 주소에 맞춥니다. 저장하거나 보내는 정보는 없습니다. */
+(function(){try{if(/^https?:$/.test(location.protocol)){var u=location.origin+location.pathname.replace(/index\.html$/,'');
+var a=document.getElementById('siteurl');a.href=u;a.textContent=decodeURI(u);
+var p=document.getElementById('privurl');p.textContent=decodeURI(u)+'privacy.html';}}catch(e){}})();
+</script>
+</body></html>
